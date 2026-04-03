@@ -25,6 +25,7 @@ import pandas as pd
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 import networkx as nx
+import time as _time
 from scipy.interpolate import CubicSpline
 
 import torch
@@ -172,7 +173,8 @@ def masked_fill_diagonal_(A: torch.Tensor, value: float = 0.0) -> torch.Tensor:
     A[idx, idx] = value
     return A
 
-def hill_activation(x: torch.Tensor, K: torch.Tensor, n: torch.Tensor, eps: float = 1e-12) -> torch.Tensor:
+def hill_function(x: torch.Tensor, K: torch.Tensor, n: torch.Tensor, eps: float = 1e-12) -> Tuple[torch.Tensor, torch.Tensor]:
+    """Compute both Hill activation and inhibition: (x^n/(K^n+x^n), K^n/(K^n+x^n))."""
     x = torch.clamp(x, min=0.0)
     K = torch.clamp(K, min=eps)
     n = torch.clamp(n, min=0.1, max=6.0)
@@ -180,19 +182,8 @@ def hill_activation(x: torch.Tensor, K: torch.Tensor, n: torch.Tensor, eps: floa
     Kn = torch.pow(K, n)
     xn = torch.nan_to_num(xn, nan=0.0, posinf=1e8, neginf=0.0)
     Kn = torch.nan_to_num(Kn, nan=0.0, posinf=1e8, neginf=0.0)
-    out = xn / (Kn + xn + eps)
-    return torch.clamp(out, 0.0, 1.0)
-
-def hill_inhibition(x: torch.Tensor, K: torch.Tensor, n: torch.Tensor, eps: float = 1e-12) -> torch.Tensor:
-    x = torch.clamp(x, min=0.0)
-    K = torch.clamp(K, min=eps)
-    n = torch.clamp(n, min=0.1, max=6.0)
-    xn = torch.pow(x + eps, n)
-    Kn = torch.pow(K, n)
-    xn = torch.nan_to_num(xn, nan=0.0, posinf=1e8, neginf=0.0)
-    Kn = torch.nan_to_num(Kn, nan=0.0, posinf=1e8, neginf=0.0)
-    out = Kn / (Kn + xn + eps)
-    return torch.clamp(out, 0.0, 1.0)
+    denom = Kn + xn + eps
+    return torch.clamp(xn / denom, 0.0, 1.0), torch.clamp(Kn / denom, 0.0, 1.0)
 
 class EdgeGates(nn.Module):
     """alpha -> gate in (0,1). alpha[j,i] = edge j->i"""
@@ -262,14 +253,11 @@ class HillODEFuncDARTS(nn.Module):
         return dict(gates=g, K=K, n=n, Vmax=Vmax, gamma=gamma, sign_gate=sign_gate)
 
     def _edge_h(self, X: torch.Tensor, K: torch.Tensor, n: torch.Tensor, sign_gate: torch.Tensor) -> torch.Tensor:
-        # X: (B,P) -> H: (B,P,P) with H[:,j,i]=h_{j->i}(X_j)
         B, P = X.shape
         X_src = X[:, :, None].expand(B, P, P)
-        h_act = hill_activation(X_src, K[None, :, :], n[None, :, :])
-        h_inh = hill_inhibition(X_src, K[None, :, :], n[None, :, :])
+        h_act, h_inh = hill_function(X_src, K[None, :, :], n[None, :, :])
         sg = sign_gate[None, :, :]
-        H = sg * h_act + (1.0 - sg) * h_inh
-        return H
+        return sg * h_act + (1.0 - sg) * h_inh
 
     def forward(self, t: torch.Tensor, X: torch.Tensor) -> torch.Tensor:
         # accept (P,) or (B,P)
@@ -408,6 +396,87 @@ def torchode_solve(
 # ============================================================
 # Training loop — Hybrid Dual-Engine
 # ============================================================
+def _run_phase(
+    model: HillODEFuncDARTS,
+    loss_fit_fn,
+    cfg: TrainConfig,
+    phase_epochs: int,
+    epoch_offset: int,
+    total_epochs: int,
+    label: str,
+) -> Tuple[Dict[str, float], float]:
+    """Run one training phase (derivative matching or ODE fine-tuning).
+    Returns (result_dict, elapsed_seconds).
+    """
+    t0 = _time.perf_counter()
+
+    opt = torch.optim.Adam(model.parameters(), lr=cfg.lr)
+    scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(
+        opt, mode="min", factor=0.5,
+        patience=max(cfg.early_stop_patience // 4, 50),
+        min_lr=1e-7,
+    )
+    best_fit = float("inf")
+    best_state: Dict[str, torch.Tensor] = {}
+    no_improve = 0
+    loss_val = 0.0
+    fit_val = 0.0
+
+    print(f"    ── {label} ({phase_epochs} ep) ──")
+    for ep in range(phase_epochs):
+        global_ep = epoch_offset + ep
+        model.train()
+        temp = cosine_anneal(cfg.gate_temp_start, cfg.gate_temp_end, global_ep, total_epochs)
+        model.gates_mod.set_temperature(temp)
+
+        opt.zero_grad(set_to_none=True)
+
+        loss_fit = loss_fit_fn()
+        loss_sparse = cfg.lambda_sparse * model.gates_mod.l1()
+        loss_beta = cfg.lambda_beta * model.beta.abs().sum()
+        loss = loss_fit + loss_sparse + loss_beta
+
+        loss.backward()
+        if cfg.clip_grad > 0:
+            nn.utils.clip_grad_norm_(model.parameters(), cfg.clip_grad)
+        opt.step()
+        scheduler.step(loss_fit.item())
+
+        fit_val = float(loss_fit.item())
+        loss_val = float(loss.item())
+
+        if fit_val < best_fit - cfg.early_stop_min_delta:
+            best_fit = fit_val
+            best_state = {k: v.detach().clone() for k, v in model.state_dict().items()}
+            no_improve = 0
+        else:
+            no_improve += 1
+            if no_improve >= cfg.early_stop_patience:
+                elapsed = _time.perf_counter() - t0
+                print(f"    [{label} ep {ep:04d}] Early stop — best_fit={best_fit:.3e}  elapsed={elapsed:.1f}s")
+                break
+
+        if ep % 10 == 0 or ep == phase_epochs - 1:
+            elapsed = _time.perf_counter() - t0
+            eps_done = ep + 1
+            eta = elapsed / eps_done * (phase_epochs - eps_done)
+            with torch.no_grad():
+                g = model.gates_mod.gates()
+                n_edges = (g > cfg.gate_thr).float().sum().item()
+                density = n_edges / (model.P * (model.P - 1))
+            print(
+                f"    [{label} ep {ep:04d}/{phase_epochs}] "
+                f"loss={loss_val:.3e} fit={fit_val:.3e} "
+                f"sparse={loss_sparse.item():.3e} temp={temp:.2f} "
+                f"edges={n_edges:.0f} dens={density:.3f} eta={eta:.0f}s"
+            )
+
+    if best_state:
+        model.load_state_dict(best_state)
+
+    return {"loss": loss_val, "fit": fit_val}, _time.perf_counter() - t0
+
+
 def train_one_condition(
     model: HillODEFuncDARTS,
     t: torch.Tensor,      # (T,)
@@ -419,176 +488,44 @@ def train_one_condition(
     y_true = y_true.to(device=device, dtype=torch.float32)
     x0 = y_true[0].detach()
 
-    # ---- Pre-compute spline derivatives for Phase 1 ----
+    # Pre-compute spline derivatives for Phase 1
     t_np = t.detach().cpu().numpy()
     y_np = y_true.detach().cpu().numpy()
-    dYdt_spline = compute_spline_derivatives(t_np, y_np)
-    dYdt_target = torch.tensor(dYdt_spline, dtype=torch.float32, device=device)
+    dYdt_target = torch.tensor(
+        compute_spline_derivatives(t_np, y_np), dtype=torch.float32, device=device,
+    )
 
-    # ---- Temporal weights: upweight later (stable) time points ----
-    tw = compute_temporal_weights(t, alpha=cfg.time_weight_alpha, w_min=cfg.time_weight_min)  # (T,)
-    tw_2d = tw[:, None]  # (T, 1) for broadcasting over proteins
+    # Temporal weights
+    tw = compute_temporal_weights(t, alpha=cfg.time_weight_alpha, w_min=cfg.time_weight_min)
+    tw_2d = tw[:, None]
 
     phase1_epochs = int(cfg.epochs * cfg.phase1_frac)
     phase2_epochs = cfg.epochs - phase1_epochs
+    t0 = _time.perf_counter()
 
-    import time as _time
-    _t0 = _time.perf_counter()
-
-    # ================================================================
-    # Phase 1: Topology Discovery (derivative matching, no ODE solve)
-    # ================================================================
-    opt = torch.optim.Adam(model.parameters(), lr=cfg.lr)
-    scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(
-        opt, mode="min", factor=0.5,
-        patience=max(cfg.early_stop_patience // 4, 50),
-        min_lr=1e-7,
-    )
-    best_fit = float("inf")
-    best_state: Dict[str, torch.Tensor] = {}
-    no_improve = 0
-
-    loss_fit = torch.tensor(0.0, device=device)
-    loss = torch.tensor(0.0, device=device)
-
-    print(f"    ── Phase 1: Derivative matching ({phase1_epochs} ep) ──")
-    for ep in range(phase1_epochs):
-        model.train()
-        temp = cosine_anneal(cfg.gate_temp_start, cfg.gate_temp_end, ep, cfg.epochs)
-        model.gates_mod.set_temperature(temp)
-
-        opt.zero_grad(set_to_none=True)
-
-        # Evaluate model at ALL data points simultaneously (T treated as batch)
-        dYdt_pred = model(t, y_true)   # (T, P)
-        # Temporally weighted MSE: upweight later time points
-        loss_fit = (tw_2d * (dYdt_pred - dYdt_target) ** 2).mean()
-
-        loss_sparse = cfg.lambda_sparse * model.gates_mod.l1()
-        loss_beta = cfg.lambda_beta * model.beta.abs().sum()
-        loss = loss_fit + loss_sparse + loss_beta
-
-        loss.backward()
-        if cfg.clip_grad > 0:
-            nn.utils.clip_grad_norm_(model.parameters(), cfg.clip_grad)
-        opt.step()
-        scheduler.step(loss_fit.item())
-
-        cur_fit = float(loss_fit.item())
-        if cur_fit < best_fit - cfg.early_stop_min_delta:
-            best_fit = cur_fit
-            best_state = {k: v.detach().clone() for k, v in model.state_dict().items()}
-            no_improve = 0
-        else:
-            no_improve += 1
-            if no_improve >= cfg.early_stop_patience:
-                elapsed = _time.perf_counter() - _t0
-                print(f"    [P1 ep {ep:04d}] Early stop — best_fit={best_fit:.3e}  elapsed={elapsed:.1f}s")
-                break
-
-        if ep % 10 == 0 or ep == phase1_epochs - 1:
-            elapsed = _time.perf_counter() - _t0
-            eps_done = ep + 1
-            eps_left = phase1_epochs - eps_done
-            eta = elapsed / eps_done * eps_left if eps_done > 0 else 0.0
-            with torch.no_grad():
-                g = model.gates_mod.gates()
-                n_edges = (g > cfg.gate_thr).float().sum().item()
-                density = n_edges / (model.P * (model.P - 1))
-            print(
-                f"    [P1 deriv ep {ep:04d}/{phase1_epochs}] "
-                f"loss={loss.item():.3e} fit={loss_fit.item():.3e} "
-                f"sparse={loss_sparse.item():.3e} temp={temp:.2f} "
-                f"edges={n_edges:.0f} dens={density:.3f} eta={eta:.0f}s"
-            )
-
-    # Restore best Phase 1 state
-    if best_state:
-        model.load_state_dict(best_state)
+    # Phase 1: Derivative matching (no ODE solve)
+    p1_fit = lambda: (tw_2d * (model(t, y_true) - dYdt_target) ** 2).mean()
+    result, _ = _run_phase(model, p1_fit, cfg, phase1_epochs, 0, cfg.epochs, "P1 deriv")
 
     with torch.no_grad():
         g = model.gates_mod.gates()
-        n_edges_p1 = int((g > cfg.gate_thr).float().sum().item())
-    print(f"    ── Phase 1 done: {n_edges_p1} edges (gate>{cfg.gate_thr}) out of {model.P*(model.P-1)} ──")
+        n_edges = int((g > cfg.gate_thr).float().sum().item())
+    print(f"    ── Phase 1 done: {n_edges} edges (gate>{cfg.gate_thr}) out of {model.P*(model.P-1)} ──")
 
     if phase2_epochs <= 0:
-        return {"loss": float(loss.item()), "fit": float(loss_fit.item())}
+        return result
 
-    # ================================================================
-    # Phase 2: Dynamics Fine-tuning (ODE integration via torchode)
-    # ================================================================
-    # Fresh optimizer + scheduler for Phase 2
-    opt2 = torch.optim.Adam(model.parameters(), lr=cfg.lr)
-    sched2 = torch.optim.lr_scheduler.ReduceLROnPlateau(
-        opt2, mode="min", factor=0.5,
-        patience=max(cfg.early_stop_patience // 4, 50),
-        min_lr=1e-7,
+    # Phase 2: ODE fine-tuning (torchode adaptive integration)
+    p2_fit = lambda: (tw_2d * (torchode_solve(
+        model, x0, t, method=cfg.ode_method, atol=cfg.ode_atol, rtol=cfg.ode_rtol,
+    ) - y_true) ** 2).mean()
+    result, _ = _run_phase(
+        model, p2_fit, cfg, phase2_epochs, phase1_epochs, cfg.epochs,
+        f"P2 ODE ({cfg.ode_method})",
     )
-    best_fit2 = float("inf")
-    best_state2: Dict[str, torch.Tensor] = {}
-    no_improve2 = 0
-    _t1 = _time.perf_counter()
 
-    print(f"    ── Phase 2: ODE fine-tuning ({phase2_epochs} ep, {cfg.ode_method}) ──")
-    for ep2 in range(phase2_epochs):
-        global_ep = phase1_epochs + ep2
-        model.train()
-        temp = cosine_anneal(cfg.gate_temp_start, cfg.gate_temp_end, global_ep, cfg.epochs)
-        model.gates_mod.set_temperature(temp)
-
-        opt2.zero_grad(set_to_none=True)
-
-        y_pred = torchode_solve(
-            model, x0, t,
-            method=cfg.ode_method,
-            atol=cfg.ode_atol,
-            rtol=cfg.ode_rtol,
-        )
-        # Temporally weighted MSE: upweight later time points
-        loss_fit = (tw_2d * (y_pred - y_true) ** 2).mean()
-
-        loss_sparse = cfg.lambda_sparse * model.gates_mod.l1()
-        loss_beta = cfg.lambda_beta * model.beta.abs().sum()
-        loss = loss_fit + loss_sparse + loss_beta
-
-        loss.backward()
-        if cfg.clip_grad > 0:
-            nn.utils.clip_grad_norm_(model.parameters(), cfg.clip_grad)
-        opt2.step()
-        sched2.step(loss_fit.item())
-
-        cur_fit = float(loss_fit.item())
-        if cur_fit < best_fit2 - cfg.early_stop_min_delta:
-            best_fit2 = cur_fit
-            best_state2 = {k: v.detach().clone() for k, v in model.state_dict().items()}
-            no_improve2 = 0
-        else:
-            no_improve2 += 1
-            if no_improve2 >= cfg.early_stop_patience:
-                elapsed = _time.perf_counter() - _t1
-                print(f"    [P2 ep {ep2:04d}] Early stop — best_fit={best_fit2:.3e}  elapsed={elapsed:.1f}s")
-                break
-
-        if ep2 % 10 == 0 or ep2 == phase2_epochs - 1:
-            elapsed = _time.perf_counter() - _t1
-            eps_done = ep2 + 1
-            eps_left = phase2_epochs - eps_done
-            eta = elapsed / eps_done * eps_left if eps_done > 0 else 0.0
-            with torch.no_grad():
-                g = model.gates_mod.gates()
-                density = (g > cfg.gate_thr).float().sum().item() / (model.P * (model.P - 1))
-            print(
-                f"    [P2 ODE ep {ep2:04d}/{phase2_epochs} (global {global_ep})] "
-                f"loss={loss.item():.3e} fit={loss_fit.item():.3e} "
-                f"sparse={loss_sparse.item():.3e} temp={temp:.2f} dens={density:.3f} eta={eta:.0f}s"
-            )
-
-    if best_state2:
-        model.load_state_dict(best_state2)
-
-    total_elapsed = _time.perf_counter() - _t0
-    print(f"    ── Training complete: total={total_elapsed:.1f}s ──")
-    return {"loss": float(loss.item()), "fit": float(loss_fit.item())}
+    print(f"    ── Training complete: total={_time.perf_counter() - t0:.1f}s ──")
+    return result
 
 # ============================================================
 # Consensus across conditions
@@ -911,8 +848,6 @@ def run_source(
 
     print(f"\n{'='*72}\nSOURCE={source} | conditions={len(conds)}\n{'='*72}")
 
-    model_last: HillODEFuncDARTS | None = None
-
     for ci, (label, fp) in enumerate(conds):
         print(f"\n-- Condition {ci+1}/{len(conds)}: {label}")
         t, X_raw, proteins = load_ts_csv(fp)
@@ -943,7 +878,6 @@ def run_source(
         ).to(device=device, dtype=torch.float32)
 
         train_one_condition(model, tt, YY, cfg)
-        model_last = model
 
         mats = export_model_to_matrices(model)
         per_cond_mats[label] = mats
@@ -1029,15 +963,15 @@ def main():
     parser.add_argument("--device", type=str, default="mps" if torch.backends.mps.is_available() else "cpu")
 
     # training knobs
-    parser.add_argument("--epochs", type=int, default=20000)
+    parser.add_argument("--epochs", type=int, default=5000)
     parser.add_argument("--lr", type=float, default=1e-3)
-    parser.add_argument("--lambda_sparse", type=float, default=0.0)
+    parser.add_argument("--lambda_sparse", type=float, default=0.01)
     parser.add_argument("--lambda_beta", type=float, default=0.0)
     parser.add_argument("--temp_start", type=float, default=2.0)
-    parser.add_argument("--temp_end", type=float, default=1.0)
+    parser.add_argument("--temp_end", type=float, default=0.01)
 
     # export knobs
-    parser.add_argument("--gate_thr", type=float, default=0.35)
+    parser.add_argument("--gate_thr", type=float, default=0.3)
     parser.add_argument("--consensus_freq", type=float, default=0.0)
 
     # model form
@@ -1045,7 +979,7 @@ def main():
     parser.add_argument("--use_mult", action="store_true", help="Use multiplicative Hill product term")
 
     # hybrid dual-engine
-    parser.add_argument("--phase1_frac", type=float, default=0.8,
+    parser.add_argument("--phase1_frac", type=float, default=0.2,
                         help="Fraction of epochs for Phase 1 (derivative matching)")
 
     # torchode integrator knobs (Phase 2)
@@ -1057,7 +991,7 @@ def main():
                         help="Relative tolerance for adaptive step controller")
 
     # early stopping
-    parser.add_argument("--early_stop_patience", type=int, default=400,
+    parser.add_argument("--early_stop_patience", type=int, default=100,
                         help="Epochs without improvement before early stop")
     parser.add_argument("--early_stop_min_delta", type=float, default=1e-6,
                         help="Minimum loss improvement to reset early-stop counter")
