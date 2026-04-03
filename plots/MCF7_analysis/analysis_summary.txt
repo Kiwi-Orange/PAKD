@@ -1,0 +1,123 @@
+============================================================
+MCF7 Cell Line Data Analysis Summary
+============================================================
+
+### Dataset Overview ###
+Total samples: 312
+Number of proteins measured: 41
+Time points: [0.0, 5.0, 15.0, 30.0, 60.0, 120.0, 240.0]
+Unique stimuli conditions: 9
+Unique inhibitor conditions: 4
+
+### Key Proteins for Main Figure ###
+  - EGFR_pY1068: ✓ available
+  - AKT_pS473: ✓ available
+  - MAPK_pT202_Y204: ✓ available
+  - mTOR_pS2448: ✓ available
+  - S6_pS235_S236: ✓ available
+  - p70S6K_pT389: ✓ available
+
+### Key Stimuli for Main Figure ###
+  - EGF: ✓ available
+  - Insulin: ✓ available
+  - FGF1: ✓ available
+  - HGF: ✓ available
+  - IGF1: ✓ available
+
+### All Proteins Measured ###
+   1. 4EBP1_pS65
+   2. ACC_pS79
+   3. AKT_pS473
+   4. AKT_pT308
+   5. AMPK_pT172
+   6. BAD_pS112
+   7. c-JUN_pS73
+   8. c-Met_pY1235
+   9. c-Raf_pS338
+  10. CHK1_pS345
+  11. CHK2_pT68
+  12. EGFR_pY1068
+  13. EGFR_pY1173
+  14. EGFR_pY992
+  15. ER-alpha_pS118
+  16. FOXO3a_pS318_S321
+  17. GSK3-alpha-beta_pS21_S9
+  18. GSK3-alpha-beta_pS9
+  19. HER2_pY1248
+  20. JNK_pT183_pT185
+  21. MAPK_pT202_Y204
+  22. MEK1_pS217_S221
+  23. mTOR_pS2448
+  24. NF-kB-p65_pS536
+  25. p27_pT157
+  26. p27_pT198
+  27. p38_pT180_Y182
+  28. p70S6K_pT389
+  29. p90RSK_pT359_S363
+  30. PDK1_pS241
+  31. PKC-alpha_pS657
+  32. PRAS40_pT246
+  33. Rb_pS807_S811
+  34. S6_pS235_S236
+  35. S6_pS240_S244
+  36. Src_pY416
+  37. Src_pY527
+  38. STAT3_pY705
+  39. TAZ_pS89
+  40. YAP_pS127
+  41. YB-1_PS102
+
+### All Stimuli Tested ###
+  - EGF
+  - FGF1
+  - HGF
+  - IGF1
+  - Insulin
+  - NRG1
+  - PBS
+  - Serum
+
+### All Inhibitors Tested ###
+  - GSK690693
+  - GSK690693_GSK1120212
+  - PD173074
+
+### Treatment Condition Summary ###
+
+Samples per condition:
+  EGF + GSK690693: 6 samples
+  EGF + GSK690693_GSK1120212: 6 samples
+  EGF + None: 12 samples
+  EGF + PD173074: 6 samples
+  FGF1 + GSK690693: 6 samples
+  FGF1 + GSK690693_GSK1120212: 6 samples
+  FGF1 + None: 12 samples
+  FGF1 + PD173074: 6 samples
+  HGF + GSK690693: 5 samples
+  HGF + GSK690693_GSK1120212: 6 samples
+  HGF + None: 11 samples
+  HGF + PD173074: 6 samples
+  IGF1 + GSK690693: 6 samples
+  IGF1 + GSK690693_GSK1120212: 6 samples
+  IGF1 + None: 12 samples
+  IGF1 + PD173074: 6 samples
+  Insulin + GSK690693: 6 samples
+  Insulin + GSK690693_GSK1120212: 6 samples
+  Insulin + None: 12 samples
+  Insulin + PD173074: 6 samples
+  NRG1 + GSK690693: 6 samples
+  NRG1 + GSK690693_GSK1120212: 6 samples
+  NRG1 + None: 12 samples
+  NRG1 + PD173074: 6 samples
+  None + GSK690693: 12 samples
+  None + GSK690693_GSK1120212: 16 samples
+  None + None: 32 samples
+  None + PD173074: 15 samples
+  PBS + GSK690693: 6 samples
+  PBS + GSK690693_GSK1120212: 6 samples
+  PBS + None: 12 samples
+  PBS + PD173074: 6 samples
+  Serum + GSK690693: 5 samples
+  Serum + GSK690693_GSK1120212: 6 samples
+  Serum + None: 12 samples
+  Serum + PD173074: 6 samples

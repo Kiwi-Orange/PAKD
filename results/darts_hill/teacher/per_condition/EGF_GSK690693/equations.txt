@@ -1,0 +1,657 @@
+# Discovered Hill-ODE with differentiable topology
+
+d(4EBP1_pS65)/dt = -gamma[4EBP1_pS65]*4EBP1_pS65 + basal[4EBP1_pS65] + Add + Mult
+  gamma[4EBP1_pS65] = 0.668894, basal[4EBP1_pS65] = 0.0530045, Vmax[4EBP1_pS65] = 0.720069
+  Additive terms (top edges):
+    + gate(BAD_pS112->4EBP1_pS65)*beta(BAD_pS112->4EBP1_pS65)*H_inh(BAD_pS112;K=0.738,n=0.715) = K^n/(K^n+BAD_pS112^n)
+      gate=1.000, beta=0.053, sign=inh
+    + gate(YB-1_PS102->4EBP1_pS65)*beta(YB-1_PS102->4EBP1_pS65)*H_act(YB-1_PS102;K=0.743,n=0.704) = YB-1_PS102^n/(K^n+YB-1_PS102^n)
+      gate=1.000, beta=0.0529, sign=act
+    + gate(PDK1_pS241->4EBP1_pS65)*beta(PDK1_pS241->4EBP1_pS65)*H_inh(PDK1_pS241;K=0.693,n=0.693) = K^n/(K^n+PDK1_pS241^n)
+      gate=0.000, beta=4.73e-05, sign=inh
+    + gate(p70S6K_pT389->4EBP1_pS65)*beta(p70S6K_pT389->4EBP1_pS65)*H_act(p70S6K_pT389;K=0.693,n=0.693) = p70S6K_pT389^n/(K^n+p70S6K_pT389^n)
+      gate=0.000, beta=4.73e-05, sign=act
+    + gate(AKT_pT308->4EBP1_pS65)*beta(AKT_pT308->4EBP1_pS65)*H_act(AKT_pT308;K=0.693,n=0.693) = AKT_pT308^n/(K^n+AKT_pT308^n)
+      gate=0.000, beta=4.73e-05, sign=act
+    + gate(YAP_pS127->4EBP1_pS65)*beta(YAP_pS127->4EBP1_pS65)*H_inh(YAP_pS127;K=0.693,n=0.693) = K^n/(K^n+YAP_pS127^n)
+      gate=0.000, beta=4.73e-05, sign=inh
+
+d(ACC_pS79)/dt = -gamma[ACC_pS79]*ACC_pS79 + basal[ACC_pS79] + Add + Mult
+  gamma[ACC_pS79] = 0.700431, basal[ACC_pS79] = -0.0381877, Vmax[ACC_pS79] = 0.674437
+  Additive terms (top edges):
+    + gate(AMPK_pT172->ACC_pS79)*beta(AMPK_pT172->ACC_pS79)*H_act(AMPK_pT172;K=0.699,n=0.764) = AMPK_pT172^n/(K^n+AMPK_pT172^n)
+      gate=1.000, beta=-0.0379, sign=act
+    + gate(EGFR_pY992->ACC_pS79)*beta(EGFR_pY992->ACC_pS79)*H_act(EGFR_pY992;K=0.693,n=0.693) = EGFR_pY992^n/(K^n+EGFR_pY992^n)
+      gate=0.000, beta=-1.97e-05, sign=act
+    + gate(MAPK_pT202_Y204->ACC_pS79)*beta(MAPK_pT202_Y204->ACC_pS79)*H_act(MAPK_pT202_Y204;K=0.693,n=0.693) = MAPK_pT202_Y204^n/(K^n+MAPK_pT202_Y204^n)
+      gate=0.000, beta=-1.97e-05, sign=act
+    + gate(TAZ_pS89->ACC_pS79)*beta(TAZ_pS89->ACC_pS79)*H_act(TAZ_pS89;K=0.693,n=0.693) = TAZ_pS89^n/(K^n+TAZ_pS89^n)
+      gate=0.000, beta=-1.97e-05, sign=act
+    + gate(AKT_pT308->ACC_pS79)*beta(AKT_pT308->ACC_pS79)*H_act(AKT_pT308;K=0.693,n=0.693) = AKT_pT308^n/(K^n+AKT_pT308^n)
+      gate=0.000, beta=-1.97e-05, sign=act
+    + gate(ER-alpha_pS118->ACC_pS79)*beta(ER-alpha_pS118->ACC_pS79)*H_act(ER-alpha_pS118;K=0.693,n=0.693) = ER-alpha_pS118^n/(K^n+ER-alpha_pS118^n)
+      gate=0.000, beta=-1.97e-05, sign=act
+
+d(AKT_pS473)/dt = -gamma[AKT_pS473]*AKT_pS473 + basal[AKT_pS473] + Add + Mult
+  gamma[AKT_pS473] = 0.610852, basal[AKT_pS473] = 0.114083, Vmax[AKT_pS473] = 0.752543
+  Additive terms (top edges):
+    + gate(c-JUN_pS73->AKT_pS473)*beta(c-JUN_pS73->AKT_pS473)*H_inh(c-JUN_pS73;K=0.804,n=0.759) = K^n/(K^n+c-JUN_pS73^n)
+      gate=1.000, beta=0.114, sign=inh
+    + gate(AKT_pT308->AKT_pS473)*beta(AKT_pT308->AKT_pS473)*H_inh(AKT_pT308;K=0.798,n=0.723) = K^n/(K^n+AKT_pT308^n)
+      gate=1.000, beta=0.114, sign=inh
+    + gate(PRAS40_pT246->AKT_pS473)*beta(PRAS40_pT246->AKT_pS473)*H_inh(PRAS40_pT246;K=0.693,n=0.693) = K^n/(K^n+PRAS40_pT246^n)
+      gate=0.000, beta=0.000255, sign=inh
+    + gate(TAZ_pS89->AKT_pS473)*beta(TAZ_pS89->AKT_pS473)*H_inh(TAZ_pS89;K=0.693,n=0.693) = K^n/(K^n+TAZ_pS89^n)
+      gate=0.000, beta=0.000255, sign=inh
+    + gate(Rb_pS807_S811->AKT_pS473)*beta(Rb_pS807_S811->AKT_pS473)*H_inh(Rb_pS807_S811;K=0.693,n=0.693) = K^n/(K^n+Rb_pS807_S811^n)
+      gate=0.000, beta=0.000255, sign=inh
+    + gate(MAPK_pT202_Y204->AKT_pS473)*beta(MAPK_pT202_Y204->AKT_pS473)*H_inh(MAPK_pT202_Y204;K=0.693,n=0.693) = K^n/(K^n+MAPK_pT202_Y204^n)
+      gate=0.000, beta=0.000255, sign=inh
+
+d(AKT_pT308)/dt = -gamma[AKT_pT308]*AKT_pT308 + basal[AKT_pT308] + Add + Mult
+  gamma[AKT_pT308] = 0.609159, basal[AKT_pT308] = 0.114874, Vmax[AKT_pT308] = 0.752956
+  Additive terms (top edges):
+    + gate(c-JUN_pS73->AKT_pT308)*beta(c-JUN_pS73->AKT_pT308)*H_inh(c-JUN_pS73;K=0.805,n=0.757) = K^n/(K^n+c-JUN_pS73^n)
+      gate=1.000, beta=0.115, sign=inh
+    + gate(AKT_pS473->AKT_pT308)*beta(AKT_pS473->AKT_pT308)*H_inh(AKT_pS473;K=0.799,n=0.722) = K^n/(K^n+AKT_pS473^n)
+      gate=1.000, beta=0.115, sign=inh
+    + gate(YB-1_PS102->AKT_pT308)*beta(YB-1_PS102->AKT_pT308)*H_inh(YB-1_PS102;K=0.693,n=0.693) = K^n/(K^n+YB-1_PS102^n)
+      gate=0.000, beta=0.00026, sign=inh
+    + gate(CHK2_pT68->AKT_pT308)*beta(CHK2_pT68->AKT_pT308)*H_inh(CHK2_pT68;K=0.693,n=0.693) = K^n/(K^n+CHK2_pT68^n)
+      gate=0.000, beta=0.00026, sign=inh
+    + gate(STAT3_pY705->AKT_pT308)*beta(STAT3_pY705->AKT_pT308)*H_inh(STAT3_pY705;K=0.693,n=0.693) = K^n/(K^n+STAT3_pY705^n)
+      gate=0.000, beta=0.00026, sign=inh
+    + gate(HER2_pY1248->AKT_pT308)*beta(HER2_pY1248->AKT_pT308)*H_inh(HER2_pY1248;K=0.693,n=0.693) = K^n/(K^n+HER2_pY1248^n)
+      gate=0.000, beta=0.00026, sign=inh
+
+d(AMPK_pT172)/dt = -gamma[AMPK_pT172]*AMPK_pT172 + basal[AMPK_pT172] + Add + Mult
+  gamma[AMPK_pT172] = 0.614929, basal[AMPK_pT172] = 0.0173352, Vmax[AMPK_pT172] = 0.708069
+  Additive terms (top edges):
+    + gate(GSK3-alpha-beta_pS21_S9->AMPK_pT172)*beta(GSK3-alpha-beta_pS21_S9->AMPK_pT172)*H_act(GSK3-alpha-beta_pS21_S9;K=0.51,n=1.06) = GSK3-alpha-beta_pS21_S9^n/(K^n+GSK3-alpha-beta_pS21_S9^n)
+      gate=1.000, beta=0.024, sign=act
+    + gate(ACC_pS79->AMPK_pT172)*beta(ACC_pS79->AMPK_pT172)*H_act(ACC_pS79;K=0.505,n=1.09) = ACC_pS79^n/(K^n+ACC_pS79^n)
+      gate=1.000, beta=0.0233, sign=act
+    + gate(mTOR_pS2448->AMPK_pT172)*beta(mTOR_pS2448->AMPK_pT172)*H_act(mTOR_pS2448;K=0.693,n=0.693) = mTOR_pS2448^n/(K^n+mTOR_pS2448^n)
+      gate=0.000, beta=1.26e-05, sign=act
+    + gate(STAT3_pY705->AMPK_pT172)*beta(STAT3_pY705->AMPK_pT172)*H_inh(STAT3_pY705;K=0.693,n=0.693) = K^n/(K^n+STAT3_pY705^n)
+      gate=0.000, beta=1.26e-05, sign=inh
+    + gate(c-Raf_pS338->AMPK_pT172)*beta(c-Raf_pS338->AMPK_pT172)*H_act(c-Raf_pS338;K=0.693,n=0.693) = c-Raf_pS338^n/(K^n+c-Raf_pS338^n)
+      gate=0.000, beta=1.26e-05, sign=act
+    + gate(EGFR_pY1068->AMPK_pT172)*beta(EGFR_pY1068->AMPK_pT172)*H_act(EGFR_pY1068;K=0.693,n=0.693) = EGFR_pY1068^n/(K^n+EGFR_pY1068^n)
+      gate=0.000, beta=1.26e-05, sign=act
+
+d(BAD_pS112)/dt = -gamma[BAD_pS112]*BAD_pS112 + basal[BAD_pS112] + Add + Mult
+  gamma[BAD_pS112] = 0.645234, basal[BAD_pS112] = 0.0602592, Vmax[BAD_pS112] = 0.723876
+  Additive terms (top edges):
+    + gate(4EBP1_pS65->BAD_pS112)*beta(4EBP1_pS65->BAD_pS112)*H_inh(4EBP1_pS65;K=0.739,n=0.753) = K^n/(K^n+4EBP1_pS65^n)
+      gate=1.000, beta=0.0604, sign=inh
+    + gate(JNK_pT183_pT185->BAD_pS112)*beta(JNK_pT183_pT185->BAD_pS112)*H_act(JNK_pT183_pT185;K=0.746,n=0.7) = JNK_pT183_pT185^n/(K^n+JNK_pT183_pT185^n)
+      gate=1.000, beta=0.0602, sign=act
+    + gate(YB-1_PS102->BAD_pS112)*beta(YB-1_PS102->BAD_pS112)*H_act(YB-1_PS102;K=0.752,n=0.71) = YB-1_PS102^n/(K^n+YB-1_PS102^n)
+      gate=1.000, beta=0.0601, sign=act
+    + gate(STAT3_pY705->BAD_pS112)*beta(STAT3_pY705->BAD_pS112)*H_inh(STAT3_pY705;K=0.693,n=0.693) = K^n/(K^n+STAT3_pY705^n)
+      gate=0.000, beta=7.71e-05, sign=inh
+    + gate(HER2_pY1248->BAD_pS112)*beta(HER2_pY1248->BAD_pS112)*H_inh(HER2_pY1248;K=0.693,n=0.693) = K^n/(K^n+HER2_pY1248^n)
+      gate=0.000, beta=7.71e-05, sign=inh
+    + gate(YAP_pS127->BAD_pS112)*beta(YAP_pS127->BAD_pS112)*H_inh(YAP_pS127;K=0.693,n=0.693) = K^n/(K^n+YAP_pS127^n)
+      gate=0.000, beta=7.71e-05, sign=inh
+
+d(CHK1_pS345)/dt = -gamma[CHK1_pS345]*CHK1_pS345 + basal[CHK1_pS345] + Add + Mult
+  gamma[CHK1_pS345] = 0.659906, basal[CHK1_pS345] = 0.071006, Vmax[CHK1_pS345] = 0.730401
+  Additive terms (top edges):
+    + gate(PRAS40_pT246->CHK1_pS345)*beta(PRAS40_pT246->CHK1_pS345)*H_inh(PRAS40_pT246;K=0.745,n=0.801) = K^n/(K^n+PRAS40_pT246^n)
+      gate=1.000, beta=0.0715, sign=inh
+    + gate(EGFR_pY992->CHK1_pS345)*beta(EGFR_pY992->CHK1_pS345)*H_inh(EGFR_pY992;K=0.745,n=0.792) = K^n/(K^n+EGFR_pY992^n)
+      gate=1.000, beta=0.0715, sign=inh
+    + gate(JNK_pT183_pT185->CHK1_pS345)*beta(JNK_pT183_pT185->CHK1_pS345)*H_inh(JNK_pT183_pT185;K=0.749,n=0.801) = K^n/(K^n+JNK_pT183_pT185^n)
+      gate=1.000, beta=0.0714, sign=inh
+    + gate(ER-alpha_pS118->CHK1_pS345)*beta(ER-alpha_pS118->CHK1_pS345)*H_inh(ER-alpha_pS118;K=0.756,n=0.762) = K^n/(K^n+ER-alpha_pS118^n)
+      gate=1.000, beta=0.0712, sign=inh
+    + gate(GSK3-alpha-beta_pS9->CHK1_pS345)*beta(GSK3-alpha-beta_pS9->CHK1_pS345)*H_inh(GSK3-alpha-beta_pS9;K=0.693,n=0.693) = K^n/(K^n+GSK3-alpha-beta_pS9^n)
+      gate=0.000, beta=0.000121, sign=inh
+    + gate(YB-1_PS102->CHK1_pS345)*beta(YB-1_PS102->CHK1_pS345)*H_inh(YB-1_PS102;K=0.693,n=0.693) = K^n/(K^n+YB-1_PS102^n)
+      gate=0.000, beta=0.000121, sign=inh
+
+d(CHK2_pT68)/dt = -gamma[CHK2_pT68]*CHK2_pT68 + basal[CHK2_pT68] + Add + Mult
+  gamma[CHK2_pT68] = 0.723389, basal[CHK2_pT68] = -0.0636947, Vmax[CHK2_pT68] = 0.66203
+  Additive terms (top edges):
+    + gate(YAP_pS127->CHK2_pT68)*beta(YAP_pS127->CHK2_pT68)*H_act(YAP_pS127;K=0.742,n=0.726) = YAP_pS127^n/(K^n+YAP_pS127^n)
+      gate=1.000, beta=-0.0637, sign=act
+    + gate(Rb_pS807_S811->CHK2_pT68)*beta(Rb_pS807_S811->CHK2_pT68)*H_act(Rb_pS807_S811;K=0.693,n=0.693) = Rb_pS807_S811^n/(K^n+Rb_pS807_S811^n)
+      gate=0.000, beta=-5.53e-05, sign=act
+    + gate(ER-alpha_pS118->CHK2_pT68)*beta(ER-alpha_pS118->CHK2_pT68)*H_act(ER-alpha_pS118;K=0.693,n=0.693) = ER-alpha_pS118^n/(K^n+ER-alpha_pS118^n)
+      gate=0.000, beta=-5.53e-05, sign=act
+    + gate(NF-kB-p65_pS536->CHK2_pT68)*beta(NF-kB-p65_pS536->CHK2_pT68)*H_act(NF-kB-p65_pS536;K=0.693,n=0.693) = NF-kB-p65_pS536^n/(K^n+NF-kB-p65_pS536^n)
+      gate=0.000, beta=-5.53e-05, sign=act
+    + gate(PKC-alpha_pS657->CHK2_pT68)*beta(PKC-alpha_pS657->CHK2_pT68)*H_act(PKC-alpha_pS657;K=0.693,n=0.693) = PKC-alpha_pS657^n/(K^n+PKC-alpha_pS657^n)
+      gate=0.000, beta=-5.53e-05, sign=act
+    + gate(PDK1_pS241->CHK2_pT68)*beta(PDK1_pS241->CHK2_pT68)*H_act(PDK1_pS241;K=0.693,n=0.693) = PDK1_pS241^n/(K^n+PDK1_pS241^n)
+      gate=0.000, beta=-5.53e-05, sign=act
+
+d(EGFR_pY1068)/dt = -gamma[EGFR_pY1068]*EGFR_pY1068 + basal[EGFR_pY1068] + Add + Mult
+  gamma[EGFR_pY1068] = 0.786434, basal[EGFR_pY1068] = -0.211723, Vmax[EGFR_pY1068] = 0.59578
+  Additive terms (top edges):
+    + gate(mTOR_pS2448->EGFR_pY1068)*beta(mTOR_pS2448->EGFR_pY1068)*H_inh(mTOR_pS2448;K=0.693,n=0.693) = K^n/(K^n+mTOR_pS2448^n)
+      gate=0.000, beta=-0.000514, sign=inh
+    + gate(Src_pY527->EGFR_pY1068)*beta(Src_pY527->EGFR_pY1068)*H_act(Src_pY527;K=0.693,n=0.693) = Src_pY527^n/(K^n+Src_pY527^n)
+      gate=0.000, beta=-0.000514, sign=act
+    + gate(PKC-alpha_pS657->EGFR_pY1068)*beta(PKC-alpha_pS657->EGFR_pY1068)*H_act(PKC-alpha_pS657;K=0.693,n=0.693) = PKC-alpha_pS657^n/(K^n+PKC-alpha_pS657^n)
+      gate=0.000, beta=-0.000514, sign=act
+    + gate(PDK1_pS241->EGFR_pY1068)*beta(PDK1_pS241->EGFR_pY1068)*H_act(PDK1_pS241;K=0.693,n=0.693) = PDK1_pS241^n/(K^n+PDK1_pS241^n)
+      gate=0.000, beta=-0.000514, sign=act
+    + gate(YAP_pS127->EGFR_pY1068)*beta(YAP_pS127->EGFR_pY1068)*H_act(YAP_pS127;K=0.693,n=0.693) = YAP_pS127^n/(K^n+YAP_pS127^n)
+      gate=0.000, beta=-0.000514, sign=act
+    + gate(p38_pT180_Y182->EGFR_pY1068)*beta(p38_pT180_Y182->EGFR_pY1068)*H_inh(p38_pT180_Y182;K=0.693,n=0.693) = K^n/(K^n+p38_pT180_Y182^n)
+      gate=0.000, beta=-0.000514, sign=inh
+
+d(EGFR_pY1173)/dt = -gamma[EGFR_pY1173]*EGFR_pY1173 + basal[EGFR_pY1173] + Add + Mult
+  gamma[EGFR_pY1173] = 0.614044, basal[EGFR_pY1173] = -0.069077, Vmax[EGFR_pY1173] = 0.662509
+  Additive terms (top edges):
+    + gate(S6_pS240_S244->EGFR_pY1173)*beta(S6_pS240_S244->EGFR_pY1173)*H_inh(S6_pS240_S244;K=0.554,n=1.04) = K^n/(K^n+S6_pS240_S244^n)
+      gate=1.000, beta=-0.0628, sign=inh
+    + gate(TAZ_pS89->EGFR_pY1173)*beta(TAZ_pS89->EGFR_pY1173)*H_act(TAZ_pS89;K=0.693,n=0.693) = TAZ_pS89^n/(K^n+TAZ_pS89^n)
+      gate=0.000, beta=-3.26e-05, sign=act
+    + gate(GSK3-alpha-beta_pS21_S9->EGFR_pY1173)*beta(GSK3-alpha-beta_pS21_S9->EGFR_pY1173)*H_inh(GSK3-alpha-beta_pS21_S9;K=0.693,n=0.693) = K^n/(K^n+GSK3-alpha-beta_pS21_S9^n)
+      gate=0.000, beta=-3.26e-05, sign=inh
+    + gate(c-Met_pY1235->EGFR_pY1173)*beta(c-Met_pY1235->EGFR_pY1173)*H_act(c-Met_pY1235;K=0.693,n=0.693) = c-Met_pY1235^n/(K^n+c-Met_pY1235^n)
+      gate=0.000, beta=-3.26e-05, sign=act
+    + gate(Rb_pS807_S811->EGFR_pY1173)*beta(Rb_pS807_S811->EGFR_pY1173)*H_inh(Rb_pS807_S811;K=0.693,n=0.693) = K^n/(K^n+Rb_pS807_S811^n)
+      gate=0.000, beta=-3.26e-05, sign=inh
+    + gate(MAPK_pT202_Y204->EGFR_pY1173)*beta(MAPK_pT202_Y204->EGFR_pY1173)*H_inh(MAPK_pT202_Y204;K=0.693,n=0.693) = K^n/(K^n+MAPK_pT202_Y204^n)
+      gate=0.000, beta=-3.26e-05, sign=inh
+
+d(EGFR_pY992)/dt = -gamma[EGFR_pY992]*EGFR_pY992 + basal[EGFR_pY992] + Add + Mult
+  gamma[EGFR_pY992] = 0.608692, basal[EGFR_pY992] = 0.0595229, Vmax[EGFR_pY992] = 0.723565
+  Additive terms (top edges):
+    + gate(PDK1_pS241->EGFR_pY992)*beta(PDK1_pS241->EGFR_pY992)*H_inh(PDK1_pS241;K=0.729,n=0.857) = K^n/(K^n+PDK1_pS241^n)
+      gate=1.000, beta=0.0598, sign=inh
+    + gate(c-JUN_pS73->EGFR_pY992)*beta(c-JUN_pS73->EGFR_pY992)*H_act(c-JUN_pS73;K=0.75,n=0.724) = c-JUN_pS73^n/(K^n+c-JUN_pS73^n)
+      gate=1.000, beta=0.0595, sign=act
+    + gate(CHK1_pS345->EGFR_pY992)*beta(CHK1_pS345->EGFR_pY992)*H_inh(CHK1_pS345;K=0.752,n=0.699) = K^n/(K^n+CHK1_pS345^n)
+      gate=1.000, beta=0.0593, sign=inh
+    + gate(p27_pT157->EGFR_pY992)*beta(p27_pT157->EGFR_pY992)*H_inh(p27_pT157;K=0.693,n=0.693) = K^n/(K^n+p27_pT157^n)
+      gate=0.000, beta=8.53e-05, sign=inh
+    + gate(mTOR_pS2448->EGFR_pY992)*beta(mTOR_pS2448->EGFR_pY992)*H_act(mTOR_pS2448;K=0.693,n=0.693) = mTOR_pS2448^n/(K^n+mTOR_pS2448^n)
+      gate=0.000, beta=8.53e-05, sign=act
+    + gate(YAP_pS127->EGFR_pY992)*beta(YAP_pS127->EGFR_pY992)*H_inh(YAP_pS127;K=0.693,n=0.693) = K^n/(K^n+YAP_pS127^n)
+      gate=0.000, beta=8.53e-05, sign=inh
+
+d(ER-alpha_pS118)/dt = -gamma[ER-alpha_pS118]*ER-alpha_pS118 + basal[ER-alpha_pS118] + Add + Mult
+  gamma[ER-alpha_pS118] = 0.655034, basal[ER-alpha_pS118] = 0.0789893, Vmax[ER-alpha_pS118] = 0.734067
+  Additive terms (top edges):
+    + gate(CHK1_pS345->ER-alpha_pS118)*beta(CHK1_pS345->ER-alpha_pS118)*H_inh(CHK1_pS345;K=0.746,n=0.804) = K^n/(K^n+CHK1_pS345^n)
+      gate=1.000, beta=0.0797, sign=inh
+    + gate(Src_pY416->ER-alpha_pS118)*beta(Src_pY416->ER-alpha_pS118)*H_inh(Src_pY416;K=0.762,n=0.701) = K^n/(K^n+Src_pY416^n)
+      gate=1.000, beta=0.0788, sign=inh
+    + gate(YB-1_PS102->ER-alpha_pS118)*beta(YB-1_PS102->ER-alpha_pS118)*H_inh(YB-1_PS102;K=0.693,n=0.693) = K^n/(K^n+YB-1_PS102^n)
+      gate=0.000, beta=0.000111, sign=inh
+    + gate(p90RSK_pT359_S363->ER-alpha_pS118)*beta(p90RSK_pT359_S363->ER-alpha_pS118)*H_inh(p90RSK_pT359_S363;K=0.693,n=0.693) = K^n/(K^n+p90RSK_pT359_S363^n)
+      gate=0.000, beta=0.000111, sign=inh
+    + gate(S6_pS235_S236->ER-alpha_pS118)*beta(S6_pS235_S236->ER-alpha_pS118)*H_inh(S6_pS235_S236;K=0.693,n=0.693) = K^n/(K^n+S6_pS235_S236^n)
+      gate=0.000, beta=0.000111, sign=inh
+    + gate(EGFR_pY992->ER-alpha_pS118)*beta(EGFR_pY992->ER-alpha_pS118)*H_inh(EGFR_pY992;K=0.693,n=0.693) = K^n/(K^n+EGFR_pY992^n)
+      gate=0.000, beta=0.000111, sign=inh
+
+d(FOXO3a_pS318_S321)/dt = -gamma[FOXO3a_pS318_S321]*FOXO3a_pS318_S321 + basal[FOXO3a_pS318_S321] + Add + Mult
+  gamma[FOXO3a_pS318_S321] = 0.711985, basal[FOXO3a_pS318_S321] = -0.022533, Vmax[FOXO3a_pS318_S321] = 0.681938
+  Additive terms (top edges):
+    + gate(p27_pT157->FOXO3a_pS318_S321)*beta(p27_pT157->FOXO3a_pS318_S321)*H_act(p27_pT157;K=0.702,n=0.698) = p27_pT157^n/(K^n+p27_pT157^n)
+      gate=1.000, beta=-0.0225, sign=act
+    + gate(GSK3-alpha-beta_pS9->FOXO3a_pS318_S321)*beta(GSK3-alpha-beta_pS9->FOXO3a_pS318_S321)*H_act(GSK3-alpha-beta_pS9;K=0.693,n=0.693) = GSK3-alpha-beta_pS9^n/(K^n+GSK3-alpha-beta_pS9^n)
+      gate=0.000, beta=-8.61e-06, sign=act
+    + gate(JNK_pT183_pT185->FOXO3a_pS318_S321)*beta(JNK_pT183_pT185->FOXO3a_pS318_S321)*H_act(JNK_pT183_pT185;K=0.693,n=0.693) = JNK_pT183_pT185^n/(K^n+JNK_pT183_pT185^n)
+      gate=0.000, beta=-8.61e-06, sign=act
+    + gate(p90RSK_pT359_S363->FOXO3a_pS318_S321)*beta(p90RSK_pT359_S363->FOXO3a_pS318_S321)*H_act(p90RSK_pT359_S363;K=0.693,n=0.693) = p90RSK_pT359_S363^n/(K^n+p90RSK_pT359_S363^n)
+      gate=0.000, beta=-8.61e-06, sign=act
+    + gate(c-Raf_pS338->FOXO3a_pS318_S321)*beta(c-Raf_pS338->FOXO3a_pS318_S321)*H_act(c-Raf_pS338;K=0.693,n=0.693) = c-Raf_pS338^n/(K^n+c-Raf_pS338^n)
+      gate=0.000, beta=-8.61e-06, sign=act
+    + gate(Src_pY527->FOXO3a_pS318_S321)*beta(Src_pY527->FOXO3a_pS318_S321)*H_act(Src_pY527;K=0.693,n=0.693) = Src_pY527^n/(K^n+Src_pY527^n)
+      gate=0.000, beta=-8.61e-06, sign=act
+
+d(GSK3-alpha-beta_pS21_S9)/dt = -gamma[GSK3-alpha-beta_pS21_S9]*GSK3-alpha-beta_pS21_S9 + basal[GSK3-alpha-beta_pS21_S9] + Add + Mult
+  gamma[GSK3-alpha-beta_pS21_S9] = 0.635493, basal[GSK3-alpha-beta_pS21_S9] = 0.0786118, Vmax[GSK3-alpha-beta_pS21_S9] = 0.733511
+  Additive terms (top edges):
+    + gate(AMPK_pT172->GSK3-alpha-beta_pS21_S9)*beta(AMPK_pT172->GSK3-alpha-beta_pS21_S9)*H_inh(AMPK_pT172;K=0.766,n=0.739) = K^n/(K^n+AMPK_pT172^n)
+      gate=1.000, beta=0.0786, sign=inh
+    + gate(Rb_pS807_S811->GSK3-alpha-beta_pS21_S9)*beta(Rb_pS807_S811->GSK3-alpha-beta_pS21_S9)*H_inh(Rb_pS807_S811;K=0.765,n=0.712) = K^n/(K^n+Rb_pS807_S811^n)
+      gate=1.000, beta=0.0785, sign=inh
+    + gate(MEK1_pS217_S221->GSK3-alpha-beta_pS21_S9)*beta(MEK1_pS217_S221->GSK3-alpha-beta_pS21_S9)*H_inh(MEK1_pS217_S221;K=0.693,n=0.693) = K^n/(K^n+MEK1_pS217_S221^n)
+      gate=0.000, beta=0.000117, sign=inh
+    + gate(AKT_pS473->GSK3-alpha-beta_pS21_S9)*beta(AKT_pS473->GSK3-alpha-beta_pS21_S9)*H_inh(AKT_pS473;K=0.693,n=0.693) = K^n/(K^n+AKT_pS473^n)
+      gate=0.000, beta=0.000117, sign=inh
+    + gate(BAD_pS112->GSK3-alpha-beta_pS21_S9)*beta(BAD_pS112->GSK3-alpha-beta_pS21_S9)*H_inh(BAD_pS112;K=0.693,n=0.693) = K^n/(K^n+BAD_pS112^n)
+      gate=0.000, beta=0.000117, sign=inh
+    + gate(S6_pS240_S244->GSK3-alpha-beta_pS21_S9)*beta(S6_pS240_S244->GSK3-alpha-beta_pS21_S9)*H_inh(S6_pS240_S244;K=0.693,n=0.693) = K^n/(K^n+S6_pS240_S244^n)
+      gate=0.000, beta=0.000117, sign=inh
+
+d(GSK3-alpha-beta_pS9)/dt = -gamma[GSK3-alpha-beta_pS9]*GSK3-alpha-beta_pS9 + basal[GSK3-alpha-beta_pS9] + Add + Mult
+  gamma[GSK3-alpha-beta_pS9] = 0.627896, basal[GSK3-alpha-beta_pS9] = 0.0928498, Vmax[GSK3-alpha-beta_pS9] = 0.741082
+  Additive terms (top edges):
+    + gate(p90RSK_pT359_S363->GSK3-alpha-beta_pS9)*beta(p90RSK_pT359_S363->GSK3-alpha-beta_pS9)*H_inh(p90RSK_pT359_S363;K=0.781,n=0.735) = K^n/(K^n+p90RSK_pT359_S363^n)
+      gate=1.000, beta=0.0928, sign=inh
+    + gate(S6_pS235_S236->GSK3-alpha-beta_pS9)*beta(S6_pS235_S236->GSK3-alpha-beta_pS9)*H_inh(S6_pS235_S236;K=0.78,n=0.728) = K^n/(K^n+S6_pS235_S236^n)
+      gate=1.000, beta=0.0927, sign=inh
+    + gate(STAT3_pY705->GSK3-alpha-beta_pS9)*beta(STAT3_pY705->GSK3-alpha-beta_pS9)*H_inh(STAT3_pY705;K=0.693,n=0.693) = K^n/(K^n+STAT3_pY705^n)
+      gate=0.000, beta=0.000163, sign=inh
+    + gate(TAZ_pS89->GSK3-alpha-beta_pS9)*beta(TAZ_pS89->GSK3-alpha-beta_pS9)*H_inh(TAZ_pS89;K=0.693,n=0.693) = K^n/(K^n+TAZ_pS89^n)
+      gate=0.000, beta=0.000163, sign=inh
+    + gate(p27_pT157->GSK3-alpha-beta_pS9)*beta(p27_pT157->GSK3-alpha-beta_pS9)*H_inh(p27_pT157;K=0.693,n=0.693) = K^n/(K^n+p27_pT157^n)
+      gate=0.000, beta=0.000163, sign=inh
+    + gate(AMPK_pT172->GSK3-alpha-beta_pS9)*beta(AMPK_pT172->GSK3-alpha-beta_pS9)*H_inh(AMPK_pT172;K=0.693,n=0.693) = K^n/(K^n+AMPK_pT172^n)
+      gate=0.000, beta=0.000163, sign=inh
+
+d(HER2_pY1248)/dt = -gamma[HER2_pY1248]*HER2_pY1248 + basal[HER2_pY1248] + Add + Mult
+  gamma[HER2_pY1248] = 0.648111, basal[HER2_pY1248] = 0.0659742, Vmax[HER2_pY1248] = 0.726861
+  Additive terms (top edges):
+    + gate(STAT3_pY705->HER2_pY1248)*beta(STAT3_pY705->HER2_pY1248)*H_inh(STAT3_pY705;K=0.748,n=0.714) = K^n/(K^n+STAT3_pY705^n)
+      gate=1.000, beta=0.0659, sign=inh
+    + gate(p27_pT198->HER2_pY1248)*beta(p27_pT198->HER2_pY1248)*H_inh(p27_pT198;K=0.747,n=0.709) = K^n/(K^n+p27_pT198^n)
+      gate=1.000, beta=0.0659, sign=inh
+    + gate(AKT_pS473->HER2_pY1248)*beta(AKT_pS473->HER2_pY1248)*H_inh(AKT_pS473;K=0.693,n=0.693) = K^n/(K^n+AKT_pS473^n)
+      gate=0.000, beta=8.02e-05, sign=inh
+    + gate(c-JUN_pS73->HER2_pY1248)*beta(c-JUN_pS73->HER2_pY1248)*H_inh(c-JUN_pS73;K=0.693,n=0.693) = K^n/(K^n+c-JUN_pS73^n)
+      gate=0.000, beta=8.02e-05, sign=inh
+    + gate(GSK3-alpha-beta_pS21_S9->HER2_pY1248)*beta(GSK3-alpha-beta_pS21_S9->HER2_pY1248)*H_inh(GSK3-alpha-beta_pS21_S9;K=0.693,n=0.693) = K^n/(K^n+GSK3-alpha-beta_pS21_S9^n)
+      gate=0.000, beta=8.02e-05, sign=inh
+    + gate(p70S6K_pT389->HER2_pY1248)*beta(p70S6K_pT389->HER2_pY1248)*H_inh(p70S6K_pT389;K=0.693,n=0.693) = K^n/(K^n+p70S6K_pT389^n)
+      gate=0.000, beta=8.02e-05, sign=inh
+
+d(JNK_pT183_pT185)/dt = -gamma[JNK_pT183_pT185]*JNK_pT183_pT185 + basal[JNK_pT183_pT185] + Add + Mult
+  gamma[JNK_pT183_pT185] = 0.694059, basal[JNK_pT183_pT185] = 0.0567541, Vmax[JNK_pT183_pT185] = 0.722562
+  Additive terms (top edges):
+    + gate(CHK1_pS345->JNK_pT183_pT185)*beta(CHK1_pS345->JNK_pT183_pT185)*H_inh(CHK1_pS345;K=0.721,n=0.806) = K^n/(K^n+CHK1_pS345^n)
+      gate=1.000, beta=0.0574, sign=inh
+    + gate(BAD_pS112->JNK_pT183_pT185)*beta(BAD_pS112->JNK_pT183_pT185)*H_inh(BAD_pS112;K=0.737,n=0.76) = K^n/(K^n+BAD_pS112^n)
+      gate=1.000, beta=0.057, sign=inh
+    + gate(S6_pS235_S236->JNK_pT183_pT185)*beta(S6_pS235_S236->JNK_pT183_pT185)*H_inh(S6_pS235_S236;K=0.693,n=0.693) = K^n/(K^n+S6_pS235_S236^n)
+      gate=0.000, beta=4.94e-05, sign=inh
+    + gate(c-JUN_pS73->JNK_pT183_pT185)*beta(c-JUN_pS73->JNK_pT183_pT185)*H_inh(c-JUN_pS73;K=0.693,n=0.693) = K^n/(K^n+c-JUN_pS73^n)
+      gate=0.000, beta=4.94e-05, sign=inh
+    + gate(GSK3-alpha-beta_pS9->JNK_pT183_pT185)*beta(GSK3-alpha-beta_pS9->JNK_pT183_pT185)*H_inh(GSK3-alpha-beta_pS9;K=0.693,n=0.693) = K^n/(K^n+GSK3-alpha-beta_pS9^n)
+      gate=0.000, beta=4.94e-05, sign=inh
+    + gate(AKT_pT308->JNK_pT183_pT185)*beta(AKT_pT308->JNK_pT183_pT185)*H_inh(AKT_pT308;K=0.693,n=0.693) = K^n/(K^n+AKT_pT308^n)
+      gate=0.000, beta=4.94e-05, sign=inh
+
+d(MAPK_pT202_Y204)/dt = -gamma[MAPK_pT202_Y204]*MAPK_pT202_Y204 + basal[MAPK_pT202_Y204] + Add + Mult
+  gamma[MAPK_pT202_Y204] = 0.73661, basal[MAPK_pT202_Y204] = -0.0286372, Vmax[MAPK_pT202_Y204] = 0.679904
+  Additive terms (top edges):
+    + gate(MEK1_pS217_S221->MAPK_pT202_Y204)*beta(MEK1_pS217_S221->MAPK_pT202_Y204)*H_inh(MEK1_pS217_S221;K=0.656,n=0.918) = K^n/(K^n+MEK1_pS217_S221^n)
+      gate=1.000, beta=-0.0267, sign=inh
+    + gate(AKT_pT308->MAPK_pT202_Y204)*beta(AKT_pT308->MAPK_pT202_Y204)*H_act(AKT_pT308;K=0.693,n=0.693) = AKT_pT308^n/(K^n+AKT_pT308^n)
+      gate=0.000, beta=-1.4e-05, sign=act
+    + gate(AMPK_pT172->MAPK_pT202_Y204)*beta(AMPK_pT172->MAPK_pT202_Y204)*H_act(AMPK_pT172;K=0.693,n=0.693) = AMPK_pT172^n/(K^n+AMPK_pT172^n)
+      gate=0.000, beta=-1.4e-05, sign=act
+    + gate(CHK1_pS345->MAPK_pT202_Y204)*beta(CHK1_pS345->MAPK_pT202_Y204)*H_act(CHK1_pS345;K=0.693,n=0.693) = CHK1_pS345^n/(K^n+CHK1_pS345^n)
+      gate=0.000, beta=-1.4e-05, sign=act
+    + gate(p27_pT157->MAPK_pT202_Y204)*beta(p27_pT157->MAPK_pT202_Y204)*H_act(p27_pT157;K=0.693,n=0.693) = p27_pT157^n/(K^n+p27_pT157^n)
+      gate=0.000, beta=-1.4e-05, sign=act
+    + gate(c-Raf_pS338->MAPK_pT202_Y204)*beta(c-Raf_pS338->MAPK_pT202_Y204)*H_inh(c-Raf_pS338;K=0.693,n=0.693) = K^n/(K^n+c-Raf_pS338^n)
+      gate=0.000, beta=-1.4e-05, sign=inh
+
+d(MEK1_pS217_S221)/dt = -gamma[MEK1_pS217_S221]*MEK1_pS217_S221 + basal[MEK1_pS217_S221] + Add + Mult
+  gamma[MEK1_pS217_S221] = 0.701846, basal[MEK1_pS217_S221] = 0.0222171, Vmax[MEK1_pS217_S221] = 0.704325
+  Additive terms (top edges):
+    + gate(MAPK_pT202_Y204->MEK1_pS217_S221)*beta(MAPK_pT202_Y204->MEK1_pS217_S221)*H_inh(MAPK_pT202_Y204;K=0.732,n=0.794) = K^n/(K^n+MAPK_pT202_Y204^n)
+      gate=1.000, beta=0.0222, sign=inh
+    + gate(S6_pS240_S244->MEK1_pS217_S221)*beta(S6_pS240_S244->MEK1_pS217_S221)*H_inh(S6_pS240_S244;K=0.693,n=0.693) = K^n/(K^n+S6_pS240_S244^n)
+      gate=0.000, beta=4.98e-06, sign=inh
+    + gate(S6_pS235_S236->MEK1_pS217_S221)*beta(S6_pS235_S236->MEK1_pS217_S221)*H_inh(S6_pS235_S236;K=0.693,n=0.693) = K^n/(K^n+S6_pS235_S236^n)
+      gate=0.000, beta=4.98e-06, sign=inh
+    + gate(c-JUN_pS73->MEK1_pS217_S221)*beta(c-JUN_pS73->MEK1_pS217_S221)*H_inh(c-JUN_pS73;K=0.693,n=0.693) = K^n/(K^n+c-JUN_pS73^n)
+      gate=0.000, beta=4.98e-06, sign=inh
+    + gate(p27_pT157->MEK1_pS217_S221)*beta(p27_pT157->MEK1_pS217_S221)*H_act(p27_pT157;K=0.693,n=0.693) = p27_pT157^n/(K^n+p27_pT157^n)
+      gate=0.000, beta=4.98e-06, sign=act
+    + gate(NF-kB-p65_pS536->MEK1_pS217_S221)*beta(NF-kB-p65_pS536->MEK1_pS217_S221)*H_act(NF-kB-p65_pS536;K=0.693,n=0.693) = NF-kB-p65_pS536^n/(K^n+NF-kB-p65_pS536^n)
+      gate=0.000, beta=4.98e-06, sign=act
+
+d(NF-kB-p65_pS536)/dt = -gamma[NF-kB-p65_pS536]*NF-kB-p65_pS536 + basal[NF-kB-p65_pS536] + Add + Mult
+  gamma[NF-kB-p65_pS536] = 0.473968, basal[NF-kB-p65_pS536] = -0.0927012, Vmax[NF-kB-p65_pS536] = 0.680664
+  Additive terms (top edges):
+    + gate(STAT3_pY705->NF-kB-p65_pS536)*beta(STAT3_pY705->NF-kB-p65_pS536)*H_act(STAT3_pY705;K=0.604,n=1.07) = STAT3_pY705^n/(K^n+STAT3_pY705^n)
+      gate=1.000, beta=-0.0252, sign=act
+    + gate(CHK2_pT68->NF-kB-p65_pS536)*beta(CHK2_pT68->NF-kB-p65_pS536)*H_act(CHK2_pT68;K=0.693,n=0.693) = CHK2_pT68^n/(K^n+CHK2_pT68^n)
+      gate=0.000, beta=-5.36e-07, sign=act
+    + gate(TAZ_pS89->NF-kB-p65_pS536)*beta(TAZ_pS89->NF-kB-p65_pS536)*H_act(TAZ_pS89;K=0.693,n=0.693) = TAZ_pS89^n/(K^n+TAZ_pS89^n)
+      gate=0.000, beta=-5.36e-07, sign=act
+    + gate(HER2_pY1248->NF-kB-p65_pS536)*beta(HER2_pY1248->NF-kB-p65_pS536)*H_act(HER2_pY1248;K=0.693,n=0.693) = HER2_pY1248^n/(K^n+HER2_pY1248^n)
+      gate=0.000, beta=-5.36e-07, sign=act
+    + gate(PDK1_pS241->NF-kB-p65_pS536)*beta(PDK1_pS241->NF-kB-p65_pS536)*H_act(PDK1_pS241;K=0.693,n=0.693) = PDK1_pS241^n/(K^n+PDK1_pS241^n)
+      gate=0.000, beta=-5.36e-07, sign=act
+    + gate(ER-alpha_pS118->NF-kB-p65_pS536)*beta(ER-alpha_pS118->NF-kB-p65_pS536)*H_inh(ER-alpha_pS118;K=0.693,n=0.693) = K^n/(K^n+ER-alpha_pS118^n)
+      gate=0.000, beta=-5.36e-07, sign=inh
+
+d(PDK1_pS241)/dt = -gamma[PDK1_pS241]*PDK1_pS241 + basal[PDK1_pS241] + Add + Mult
+  gamma[PDK1_pS241] = 0.689122, basal[PDK1_pS241] = 0.0277652, Vmax[PDK1_pS241] = 0.707212
+  Additive terms (top edges):
+    + gate(EGFR_pY992->PDK1_pS241)*beta(EGFR_pY992->PDK1_pS241)*H_act(EGFR_pY992;K=0.692,n=0.735) = EGFR_pY992^n/(K^n+EGFR_pY992^n)
+      gate=1.000, beta=0.0279, sign=act
+    + gate(Src_pY527->PDK1_pS241)*beta(Src_pY527->PDK1_pS241)*H_act(Src_pY527;K=0.693,n=0.693) = Src_pY527^n/(K^n+Src_pY527^n)
+      gate=0.000, beta=9.23e-06, sign=act
+    + gate(EGFR_pY1068->PDK1_pS241)*beta(EGFR_pY1068->PDK1_pS241)*H_act(EGFR_pY1068;K=0.693,n=0.693) = EGFR_pY1068^n/(K^n+EGFR_pY1068^n)
+      gate=0.000, beta=9.23e-06, sign=act
+    + gate(Src_pY416->PDK1_pS241)*beta(Src_pY416->PDK1_pS241)*H_inh(Src_pY416;K=0.693,n=0.693) = K^n/(K^n+Src_pY416^n)
+      gate=0.000, beta=9.23e-06, sign=inh
+    + gate(NF-kB-p65_pS536->PDK1_pS241)*beta(NF-kB-p65_pS536->PDK1_pS241)*H_inh(NF-kB-p65_pS536;K=0.693,n=0.693) = K^n/(K^n+NF-kB-p65_pS536^n)
+      gate=0.000, beta=9.23e-06, sign=inh
+    + gate(c-JUN_pS73->PDK1_pS241)*beta(c-JUN_pS73->PDK1_pS241)*H_act(c-JUN_pS73;K=0.693,n=0.693) = c-JUN_pS73^n/(K^n+c-JUN_pS73^n)
+      gate=0.000, beta=9.23e-06, sign=act
+
+d(PKC-alpha_pS657)/dt = -gamma[PKC-alpha_pS657]*PKC-alpha_pS657 + basal[PKC-alpha_pS657] + Add + Mult
+  gamma[PKC-alpha_pS657] = 0.682968, basal[PKC-alpha_pS657] = 0.0310304, Vmax[PKC-alpha_pS657] = 0.708921
+  Additive terms (top edges):
+    + gate(Src_pY527->PKC-alpha_pS657)*beta(Src_pY527->PKC-alpha_pS657)*H_inh(Src_pY527;K=0.709,n=0.889) = K^n/(K^n+Src_pY527^n)
+      gate=1.000, beta=0.0313, sign=inh
+    + gate(AKT_pT308->PKC-alpha_pS657)*beta(AKT_pT308->PKC-alpha_pS657)*H_inh(AKT_pT308;K=0.693,n=0.693) = K^n/(K^n+AKT_pT308^n)
+      gate=0.000, beta=1.41e-05, sign=inh
+    + gate(AKT_pS473->PKC-alpha_pS657)*beta(AKT_pS473->PKC-alpha_pS657)*H_inh(AKT_pS473;K=0.693,n=0.693) = K^n/(K^n+AKT_pS473^n)
+      gate=0.000, beta=1.41e-05, sign=inh
+    + gate(MEK1_pS217_S221->PKC-alpha_pS657)*beta(MEK1_pS217_S221->PKC-alpha_pS657)*H_inh(MEK1_pS217_S221;K=0.693,n=0.693) = K^n/(K^n+MEK1_pS217_S221^n)
+      gate=0.000, beta=1.41e-05, sign=inh
+    + gate(p27_pT157->PKC-alpha_pS657)*beta(p27_pT157->PKC-alpha_pS657)*H_inh(p27_pT157;K=0.693,n=0.693) = K^n/(K^n+p27_pT157^n)
+      gate=0.000, beta=1.41e-05, sign=inh
+    + gate(Rb_pS807_S811->PKC-alpha_pS657)*beta(Rb_pS807_S811->PKC-alpha_pS657)*H_inh(Rb_pS807_S811;K=0.693,n=0.693) = K^n/(K^n+Rb_pS807_S811^n)
+      gate=0.000, beta=1.41e-05, sign=inh
+
+d(PRAS40_pT246)/dt = -gamma[PRAS40_pT246]*PRAS40_pT246 + basal[PRAS40_pT246] + Add + Mult
+  gamma[PRAS40_pT246] = 0.625476, basal[PRAS40_pT246] = 0.076909, Vmax[PRAS40_pT246] = 0.732664
+  Additive terms (top edges):
+    + gate(p27_pT198->PRAS40_pT246)*beta(p27_pT198->PRAS40_pT246)*H_inh(p27_pT198;K=0.756,n=0.766) = K^n/(K^n+p27_pT198^n)
+      gate=1.000, beta=0.0771, sign=inh
+    + gate(CHK1_pS345->PRAS40_pT246)*beta(CHK1_pS345->PRAS40_pT246)*H_inh(CHK1_pS345;K=0.764,n=0.73) = K^n/(K^n+CHK1_pS345^n)
+      gate=1.000, beta=0.0769, sign=inh
+    + gate(p90RSK_pT359_S363->PRAS40_pT246)*beta(p90RSK_pT359_S363->PRAS40_pT246)*H_inh(p90RSK_pT359_S363;K=0.77,n=0.715) = K^n/(K^n+p90RSK_pT359_S363^n)
+      gate=1.000, beta=0.0767, sign=inh
+    + gate(STAT3_pY705->PRAS40_pT246)*beta(STAT3_pY705->PRAS40_pT246)*H_inh(STAT3_pY705;K=0.693,n=0.693) = K^n/(K^n+STAT3_pY705^n)
+      gate=0.000, beta=0.000132, sign=inh
+    + gate(HER2_pY1248->PRAS40_pT246)*beta(HER2_pY1248->PRAS40_pT246)*H_inh(HER2_pY1248;K=0.693,n=0.693) = K^n/(K^n+HER2_pY1248^n)
+      gate=0.000, beta=0.000132, sign=inh
+    + gate(BAD_pS112->PRAS40_pT246)*beta(BAD_pS112->PRAS40_pT246)*H_inh(BAD_pS112;K=0.693,n=0.693) = K^n/(K^n+BAD_pS112^n)
+      gate=0.000, beta=0.000132, sign=inh
+
+d(Rb_pS807_S811)/dt = -gamma[Rb_pS807_S811]*Rb_pS807_S811 + basal[Rb_pS807_S811] + Add + Mult
+  gamma[Rb_pS807_S811] = 0.615705, basal[Rb_pS807_S811] = 0.095905, Vmax[Rb_pS807_S811] = 0.742564
+  Additive terms (top edges):
+    + gate(GSK3-alpha-beta_pS21_S9->Rb_pS807_S811)*beta(GSK3-alpha-beta_pS21_S9->Rb_pS807_S811)*H_inh(GSK3-alpha-beta_pS21_S9;K=0.784,n=0.714) = K^n/(K^n+GSK3-alpha-beta_pS21_S9^n)
+      gate=1.000, beta=0.0957, sign=inh
+    + gate(S6_pS235_S236->Rb_pS807_S811)*beta(S6_pS235_S236->Rb_pS807_S811)*H_inh(S6_pS235_S236;K=0.785,n=0.715) = K^n/(K^n+S6_pS235_S236^n)
+      gate=1.000, beta=0.0957, sign=inh
+    + gate(EGFR_pY992->Rb_pS807_S811)*beta(EGFR_pY992->Rb_pS807_S811)*H_inh(EGFR_pY992;K=0.693,n=0.693) = K^n/(K^n+EGFR_pY992^n)
+      gate=0.000, beta=0.00018, sign=inh
+    + gate(CHK2_pT68->Rb_pS807_S811)*beta(CHK2_pT68->Rb_pS807_S811)*H_inh(CHK2_pT68;K=0.693,n=0.693) = K^n/(K^n+CHK2_pT68^n)
+      gate=0.000, beta=0.00018, sign=inh
+    + gate(HER2_pY1248->Rb_pS807_S811)*beta(HER2_pY1248->Rb_pS807_S811)*H_inh(HER2_pY1248;K=0.693,n=0.693) = K^n/(K^n+HER2_pY1248^n)
+      gate=0.000, beta=0.00018, sign=inh
+    + gate(AKT_pS473->Rb_pS807_S811)*beta(AKT_pS473->Rb_pS807_S811)*H_inh(AKT_pS473;K=0.693,n=0.693) = K^n/(K^n+AKT_pS473^n)
+      gate=0.000, beta=0.00018, sign=inh
+
+d(S6_pS235_S236)/dt = -gamma[S6_pS235_S236]*S6_pS235_S236 + basal[S6_pS235_S236] + Add + Mult
+  gamma[S6_pS235_S236] = 0.596786, basal[S6_pS235_S236] = 0.107447, Vmax[S6_pS235_S236] = 0.748679
+  Additive terms (top edges):
+    + gate(GSK3-alpha-beta_pS9->S6_pS235_S236)*beta(GSK3-alpha-beta_pS9->S6_pS235_S236)*H_inh(GSK3-alpha-beta_pS9;K=0.797,n=0.716) = K^n/(K^n+GSK3-alpha-beta_pS9^n)
+      gate=1.000, beta=0.107, sign=inh
+    + gate(S6_pS240_S244->S6_pS235_S236)*beta(S6_pS240_S244->S6_pS235_S236)*H_act(S6_pS240_S244;K=0.796,n=0.711) = S6_pS240_S244^n/(K^n+S6_pS240_S244^n)
+      gate=1.000, beta=0.107, sign=act
+    + gate(Rb_pS807_S811->S6_pS235_S236)*beta(Rb_pS807_S811->S6_pS235_S236)*H_inh(Rb_pS807_S811;K=0.797,n=0.714) = K^n/(K^n+Rb_pS807_S811^n)
+      gate=1.000, beta=0.107, sign=inh
+    + gate(AMPK_pT172->S6_pS235_S236)*beta(AMPK_pT172->S6_pS235_S236)*H_inh(AMPK_pT172;K=0.693,n=0.693) = K^n/(K^n+AMPK_pT172^n)
+      gate=0.000, beta=0.000266, sign=inh
+    + gate(YB-1_PS102->S6_pS235_S236)*beta(YB-1_PS102->S6_pS235_S236)*H_inh(YB-1_PS102;K=0.693,n=0.693) = K^n/(K^n+YB-1_PS102^n)
+      gate=0.000, beta=0.000266, sign=inh
+    + gate(p27_pT157->S6_pS235_S236)*beta(p27_pT157->S6_pS235_S236)*H_inh(p27_pT157;K=0.693,n=0.693) = K^n/(K^n+p27_pT157^n)
+      gate=0.000, beta=0.000266, sign=inh
+
+d(S6_pS240_S244)/dt = -gamma[S6_pS240_S244]*S6_pS240_S244 + basal[S6_pS240_S244] + Add + Mult
+  gamma[S6_pS240_S244] = 0.609523, basal[S6_pS240_S244] = 0.103472, Vmax[S6_pS240_S244] = 0.747635
+  Additive terms (top edges):
+    + gate(EGFR_pY1173->S6_pS240_S244)*beta(EGFR_pY1173->S6_pS240_S244)*H_inh(EGFR_pY1173;K=0.771,n=0.892) = K^n/(K^n+EGFR_pY1173^n)
+      gate=1.000, beta=0.105, sign=inh
+    + gate(S6_pS235_S236->S6_pS240_S244)*beta(S6_pS235_S236->S6_pS240_S244)*H_inh(S6_pS235_S236;K=0.794,n=0.721) = K^n/(K^n+S6_pS235_S236^n)
+      gate=1.000, beta=0.103, sign=inh
+    + gate(YB-1_PS102->S6_pS240_S244)*beta(YB-1_PS102->S6_pS240_S244)*H_inh(YB-1_PS102;K=0.693,n=0.693) = K^n/(K^n+YB-1_PS102^n)
+      gate=0.000, beta=0.000222, sign=inh
+    + gate(CHK1_pS345->S6_pS240_S244)*beta(CHK1_pS345->S6_pS240_S244)*H_inh(CHK1_pS345;K=0.693,n=0.693) = K^n/(K^n+CHK1_pS345^n)
+      gate=0.000, beta=0.000222, sign=inh
+    + gate(EGFR_pY992->S6_pS240_S244)*beta(EGFR_pY992->S6_pS240_S244)*H_inh(EGFR_pY992;K=0.693,n=0.693) = K^n/(K^n+EGFR_pY992^n)
+      gate=0.000, beta=0.000222, sign=inh
+    + gate(HER2_pY1248->S6_pS240_S244)*beta(HER2_pY1248->S6_pS240_S244)*H_inh(HER2_pY1248;K=0.693,n=0.693) = K^n/(K^n+HER2_pY1248^n)
+      gate=0.000, beta=0.000222, sign=inh
+
+d(STAT3_pY705)/dt = -gamma[STAT3_pY705]*STAT3_pY705 + basal[STAT3_pY705] + Add + Mult
+  gamma[STAT3_pY705] = 0.625869, basal[STAT3_pY705] = 0.0918591, Vmax[STAT3_pY705] = 0.740546
+  Additive terms (top edges):
+    + gate(HER2_pY1248->STAT3_pY705)*beta(HER2_pY1248->STAT3_pY705)*H_inh(HER2_pY1248;K=0.776,n=0.741) = K^n/(K^n+HER2_pY1248^n)
+      gate=1.000, beta=0.0919, sign=inh
+    + gate(NF-kB-p65_pS536->STAT3_pY705)*beta(NF-kB-p65_pS536->STAT3_pY705)*H_inh(NF-kB-p65_pS536;K=0.78,n=0.732) = K^n/(K^n+NF-kB-p65_pS536^n)
+      gate=1.000, beta=0.0918, sign=inh
+    + gate(Src_pY416->STAT3_pY705)*beta(Src_pY416->STAT3_pY705)*H_inh(Src_pY416;K=0.776,n=0.711) = K^n/(K^n+Src_pY416^n)
+      gate=1.000, beta=0.0917, sign=inh
+    + gate(S6_pS235_S236->STAT3_pY705)*beta(S6_pS235_S236->STAT3_pY705)*H_inh(S6_pS235_S236;K=0.693,n=0.693) = K^n/(K^n+S6_pS235_S236^n)
+      gate=0.000, beta=0.000188, sign=inh
+    + gate(Rb_pS807_S811->STAT3_pY705)*beta(Rb_pS807_S811->STAT3_pY705)*H_inh(Rb_pS807_S811;K=0.693,n=0.693) = K^n/(K^n+Rb_pS807_S811^n)
+      gate=0.000, beta=0.000188, sign=inh
+    + gate(MAPK_pT202_Y204->STAT3_pY705)*beta(MAPK_pT202_Y204->STAT3_pY705)*H_inh(MAPK_pT202_Y204;K=0.693,n=0.693) = K^n/(K^n+MAPK_pT202_Y204^n)
+      gate=0.000, beta=0.000188, sign=inh
+
+d(Src_pY416)/dt = -gamma[Src_pY416]*Src_pY416 + basal[Src_pY416] + Add + Mult
+  gamma[Src_pY416] = 0.614424, basal[Src_pY416] = 0.0978951, Vmax[Src_pY416] = 0.744649
+  Additive terms (top edges):
+    + gate(YB-1_PS102->Src_pY416)*beta(YB-1_PS102->Src_pY416)*H_inh(YB-1_PS102;K=0.763,n=0.825) = K^n/(K^n+YB-1_PS102^n)
+      gate=1.000, beta=0.0988, sign=inh
+    + gate(ER-alpha_pS118->Src_pY416)*beta(ER-alpha_pS118->Src_pY416)*H_inh(ER-alpha_pS118;K=0.783,n=0.788) = K^n/(K^n+ER-alpha_pS118^n)
+      gate=1.000, beta=0.0981, sign=inh
+    + gate(c-Met_pY1235->Src_pY416)*beta(c-Met_pY1235->Src_pY416)*H_inh(c-Met_pY1235;K=0.786,n=0.769) = K^n/(K^n+c-Met_pY1235^n)
+      gate=1.000, beta=0.098, sign=inh
+    + gate(STAT3_pY705->Src_pY416)*beta(STAT3_pY705->Src_pY416)*H_inh(STAT3_pY705;K=0.786,n=0.757) = K^n/(K^n+STAT3_pY705^n)
+      gate=1.000, beta=0.098, sign=inh
+    + gate(c-JUN_pS73->Src_pY416)*beta(c-JUN_pS73->Src_pY416)*H_inh(c-JUN_pS73;K=0.693,n=0.693) = K^n/(K^n+c-JUN_pS73^n)
+      gate=0.000, beta=0.000255, sign=inh
+    + gate(S6_pS235_S236->Src_pY416)*beta(S6_pS235_S236->Src_pY416)*H_inh(S6_pS235_S236;K=0.693,n=0.693) = K^n/(K^n+S6_pS235_S236^n)
+      gate=0.000, beta=0.000255, sign=inh
+
+d(Src_pY527)/dt = -gamma[Src_pY527]*Src_pY527 + basal[Src_pY527] + Add + Mult
+  gamma[Src_pY527] = 0.686763, basal[Src_pY527] = 0.0350475, Vmax[Src_pY527] = 0.710939
+  Additive terms (top edges):
+    + gate(PKC-alpha_pS657->Src_pY527)*beta(PKC-alpha_pS657->Src_pY527)*H_inh(PKC-alpha_pS657;K=0.718,n=0.835) = K^n/(K^n+PKC-alpha_pS657^n)
+      gate=1.000, beta=0.0352, sign=inh
+    + gate(S6_pS240_S244->Src_pY527)*beta(S6_pS240_S244->Src_pY527)*H_inh(S6_pS240_S244;K=0.693,n=0.693) = K^n/(K^n+S6_pS240_S244^n)
+      gate=0.000, beta=1.65e-05, sign=inh
+    + gate(Rb_pS807_S811->Src_pY527)*beta(Rb_pS807_S811->Src_pY527)*H_inh(Rb_pS807_S811;K=0.693,n=0.693) = K^n/(K^n+Rb_pS807_S811^n)
+      gate=0.000, beta=1.65e-05, sign=inh
+    + gate(GSK3-alpha-beta_pS9->Src_pY527)*beta(GSK3-alpha-beta_pS9->Src_pY527)*H_inh(GSK3-alpha-beta_pS9;K=0.693,n=0.693) = K^n/(K^n+GSK3-alpha-beta_pS9^n)
+      gate=0.000, beta=1.65e-05, sign=inh
+    + gate(AKT_pT308->Src_pY527)*beta(AKT_pT308->Src_pY527)*H_inh(AKT_pT308;K=0.693,n=0.693) = K^n/(K^n+AKT_pT308^n)
+      gate=0.000, beta=1.65e-05, sign=inh
+    + gate(S6_pS235_S236->Src_pY527)*beta(S6_pS235_S236->Src_pY527)*H_inh(S6_pS235_S236;K=0.693,n=0.693) = K^n/(K^n+S6_pS235_S236^n)
+      gate=0.000, beta=1.65e-05, sign=inh
+
+d(TAZ_pS89)/dt = -gamma[TAZ_pS89]*TAZ_pS89 + basal[TAZ_pS89] + Add + Mult
+  gamma[TAZ_pS89] = 0.644649, basal[TAZ_pS89] = 0.0834929, Vmax[TAZ_pS89] = 0.736218
+  Additive terms (top edges):
+    + gate(c-Met_pY1235->TAZ_pS89)*beta(c-Met_pY1235->TAZ_pS89)*H_inh(c-Met_pY1235;K=0.764,n=0.762) = K^n/(K^n+c-Met_pY1235^n)
+      gate=1.000, beta=0.0837, sign=inh
+    + gate(c-Raf_pS338->TAZ_pS89)*beta(c-Raf_pS338->TAZ_pS89)*H_inh(c-Raf_pS338;K=0.771,n=0.718) = K^n/(K^n+c-Raf_pS338^n)
+      gate=1.000, beta=0.0834, sign=inh
+    + gate(PRAS40_pT246->TAZ_pS89)*beta(PRAS40_pT246->TAZ_pS89)*H_inh(PRAS40_pT246;K=0.693,n=0.693) = K^n/(K^n+PRAS40_pT246^n)
+      gate=0.000, beta=0.000127, sign=inh
+    + gate(Src_pY416->TAZ_pS89)*beta(Src_pY416->TAZ_pS89)*H_inh(Src_pY416;K=0.693,n=0.693) = K^n/(K^n+Src_pY416^n)
+      gate=0.000, beta=0.000127, sign=inh
+    + gate(p90RSK_pT359_S363->TAZ_pS89)*beta(p90RSK_pT359_S363->TAZ_pS89)*H_inh(p90RSK_pT359_S363;K=0.693,n=0.693) = K^n/(K^n+p90RSK_pT359_S363^n)
+      gate=0.000, beta=0.000127, sign=inh
+    + gate(HER2_pY1248->TAZ_pS89)*beta(HER2_pY1248->TAZ_pS89)*H_inh(HER2_pY1248;K=0.693,n=0.693) = K^n/(K^n+HER2_pY1248^n)
+      gate=0.000, beta=0.000127, sign=inh
+
+d(YAP_pS127)/dt = -gamma[YAP_pS127]*YAP_pS127 + basal[YAP_pS127] + Add + Mult
+  gamma[YAP_pS127] = 0.675497, basal[YAP_pS127] = 0.0298872, Vmax[YAP_pS127] = 0.708214
+  Additive terms (top edges):
+    + gate(CHK2_pT68->YAP_pS127)*beta(CHK2_pT68->YAP_pS127)*H_inh(CHK2_pT68;K=0.71,n=0.701) = K^n/(K^n+CHK2_pT68^n)
+      gate=1.000, beta=0.0299, sign=inh
+    + gate(mTOR_pS2448->YAP_pS127)*beta(mTOR_pS2448->YAP_pS127)*H_act(mTOR_pS2448;K=0.693,n=0.693) = mTOR_pS2448^n/(K^n+mTOR_pS2448^n)
+      gate=0.000, beta=1.46e-05, sign=act
+    + gate(S6_pS240_S244->YAP_pS127)*beta(S6_pS240_S244->YAP_pS127)*H_act(S6_pS240_S244;K=0.693,n=0.693) = S6_pS240_S244^n/(K^n+S6_pS240_S244^n)
+      gate=0.000, beta=1.46e-05, sign=act
+    + gate(BAD_pS112->YAP_pS127)*beta(BAD_pS112->YAP_pS127)*H_inh(BAD_pS112;K=0.693,n=0.693) = K^n/(K^n+BAD_pS112^n)
+      gate=0.000, beta=1.46e-05, sign=inh
+    + gate(AKT_pT308->YAP_pS127)*beta(AKT_pT308->YAP_pS127)*H_act(AKT_pT308;K=0.693,n=0.693) = AKT_pT308^n/(K^n+AKT_pT308^n)
+      gate=0.000, beta=1.46e-05, sign=act
+    + gate(YB-1_PS102->YAP_pS127)*beta(YB-1_PS102->YAP_pS127)*H_inh(YB-1_PS102;K=0.693,n=0.693) = K^n/(K^n+YB-1_PS102^n)
+      gate=0.000, beta=1.46e-05, sign=inh
+
+d(YB-1_PS102)/dt = -gamma[YB-1_PS102]*YB-1_PS102 + basal[YB-1_PS102] + Add + Mult
+  gamma[YB-1_PS102] = 0.600558, basal[YB-1_PS102] = 0.0732578, Vmax[YB-1_PS102] = 0.731122
+  Additive terms (top edges):
+    + gate(Src_pY416->YB-1_PS102)*beta(Src_pY416->YB-1_PS102)*H_inh(Src_pY416;K=0.75,n=0.799) = K^n/(K^n+Src_pY416^n)
+      gate=1.000, beta=0.0738, sign=inh
+    + gate(4EBP1_pS65->YB-1_PS102)*beta(4EBP1_pS65->YB-1_PS102)*H_inh(4EBP1_pS65;K=0.753,n=0.761) = K^n/(K^n+4EBP1_pS65^n)
+      gate=1.000, beta=0.0734, sign=inh
+    + gate(BAD_pS112->YB-1_PS102)*beta(BAD_pS112->YB-1_PS102)*H_inh(BAD_pS112;K=0.758,n=0.737) = K^n/(K^n+BAD_pS112^n)
+      gate=1.000, beta=0.0733, sign=inh
+    + gate(p70S6K_pT389->YB-1_PS102)*beta(p70S6K_pT389->YB-1_PS102)*H_act(p70S6K_pT389;K=0.763,n=0.731) = p70S6K_pT389^n/(K^n+p70S6K_pT389^n)
+      gate=1.000, beta=0.0733, sign=act
+    + gate(Rb_pS807_S811->YB-1_PS102)*beta(Rb_pS807_S811->YB-1_PS102)*H_inh(Rb_pS807_S811;K=0.693,n=0.693) = K^n/(K^n+Rb_pS807_S811^n)
+      gate=0.000, beta=0.000147, sign=inh
+    + gate(EGFR_pY992->YB-1_PS102)*beta(EGFR_pY992->YB-1_PS102)*H_inh(EGFR_pY992;K=0.693,n=0.693) = K^n/(K^n+EGFR_pY992^n)
+      gate=0.000, beta=0.000147, sign=inh
+
+d(c-JUN_pS73)/dt = -gamma[c-JUN_pS73]*c-JUN_pS73 + basal[c-JUN_pS73] + Add + Mult
+  gamma[c-JUN_pS73] = 0.600688, basal[c-JUN_pS73] = 0.0652157, Vmax[c-JUN_pS73] = 0.727043
+  Additive terms (top edges):
+    + gate(AKT_pT308->c-JUN_pS73)*beta(AKT_pT308->c-JUN_pS73)*H_act(AKT_pT308;K=0.745,n=0.818) = AKT_pT308^n/(K^n+AKT_pT308^n)
+      gate=1.000, beta=0.0658, sign=act
+    + gate(AKT_pS473->c-JUN_pS73)*beta(AKT_pS473->c-JUN_pS73)*H_act(AKT_pS473;K=0.745,n=0.818) = AKT_pS473^n/(K^n+AKT_pS473^n)
+      gate=1.000, beta=0.0658, sign=act
+    + gate(EGFR_pY992->c-JUN_pS73)*beta(EGFR_pY992->c-JUN_pS73)*H_act(EGFR_pY992;K=0.76,n=0.702) = EGFR_pY992^n/(K^n+EGFR_pY992^n)
+      gate=1.000, beta=0.065, sign=act
+    + gate(S6_pS235_S236->c-JUN_pS73)*beta(S6_pS235_S236->c-JUN_pS73)*H_inh(S6_pS235_S236;K=0.693,n=0.693) = K^n/(K^n+S6_pS235_S236^n)
+      gate=0.000, beta=0.000102, sign=inh
+    + gate(CHK2_pT68->c-JUN_pS73)*beta(CHK2_pT68->c-JUN_pS73)*H_inh(CHK2_pT68;K=0.693,n=0.693) = K^n/(K^n+CHK2_pT68^n)
+      gate=0.000, beta=0.000102, sign=inh
+    + gate(p38_pT180_Y182->c-JUN_pS73)*beta(p38_pT180_Y182->c-JUN_pS73)*H_act(p38_pT180_Y182;K=0.693,n=0.693) = p38_pT180_Y182^n/(K^n+p38_pT180_Y182^n)
+      gate=0.000, beta=0.000102, sign=act
+
+d(c-Met_pY1235)/dt = -gamma[c-Met_pY1235]*c-Met_pY1235 + basal[c-Met_pY1235] + Add + Mult
+  gamma[c-Met_pY1235] = 0.656459, basal[c-Met_pY1235] = 0.0601482, Vmax[c-Met_pY1235] = 0.723869
+  Additive terms (top edges):
+    + gate(TAZ_pS89->c-Met_pY1235)*beta(TAZ_pS89->c-Met_pY1235)*H_inh(TAZ_pS89;K=0.74,n=0.739) = K^n/(K^n+TAZ_pS89^n)
+      gate=1.000, beta=0.0602, sign=inh
+    + gate(Src_pY416->c-Met_pY1235)*beta(Src_pY416->c-Met_pY1235)*H_inh(Src_pY416;K=0.743,n=0.708) = K^n/(K^n+Src_pY416^n)
+      gate=1.000, beta=0.0601, sign=inh
+    + gate(S6_pS240_S244->c-Met_pY1235)*beta(S6_pS240_S244->c-Met_pY1235)*H_inh(S6_pS240_S244;K=0.693,n=0.693) = K^n/(K^n+S6_pS240_S244^n)
+      gate=0.000, beta=6.48e-05, sign=inh
+    + gate(Rb_pS807_S811->c-Met_pY1235)*beta(Rb_pS807_S811->c-Met_pY1235)*H_inh(Rb_pS807_S811;K=0.693,n=0.693) = K^n/(K^n+Rb_pS807_S811^n)
+      gate=0.000, beta=6.48e-05, sign=inh
+    + gate(GSK3-alpha-beta_pS9->c-Met_pY1235)*beta(GSK3-alpha-beta_pS9->c-Met_pY1235)*H_inh(GSK3-alpha-beta_pS9;K=0.693,n=0.693) = K^n/(K^n+GSK3-alpha-beta_pS9^n)
+      gate=0.000, beta=6.48e-05, sign=inh
+    + gate(CHK1_pS345->c-Met_pY1235)*beta(CHK1_pS345->c-Met_pY1235)*H_inh(CHK1_pS345;K=0.693,n=0.693) = K^n/(K^n+CHK1_pS345^n)
+      gate=0.000, beta=6.48e-05, sign=inh
+
+d(c-Raf_pS338)/dt = -gamma[c-Raf_pS338]*c-Raf_pS338 + basal[c-Raf_pS338] + Add + Mult
+  gamma[c-Raf_pS338] = 0.498271, basal[c-Raf_pS338] = -0.0528582, Vmax[c-Raf_pS338] = 0.667168
+  Additive terms (top edges):
+    + gate(TAZ_pS89->c-Raf_pS338)*beta(TAZ_pS89->c-Raf_pS338)*H_act(TAZ_pS89;K=0.656,n=0.699) = TAZ_pS89^n/(K^n+TAZ_pS89^n)
+      gate=1.000, beta=-0.0534, sign=act
+    + gate(NF-kB-p65_pS536->c-Raf_pS338)*beta(NF-kB-p65_pS536->c-Raf_pS338)*H_inh(NF-kB-p65_pS536;K=0.693,n=0.693) = K^n/(K^n+NF-kB-p65_pS536^n)
+      gate=0.000, beta=-1.23e-07, sign=inh
+    + gate(AMPK_pT172->c-Raf_pS338)*beta(AMPK_pT172->c-Raf_pS338)*H_act(AMPK_pT172;K=0.693,n=0.693) = AMPK_pT172^n/(K^n+AMPK_pT172^n)
+      gate=0.000, beta=-1.23e-07, sign=act
+    + gate(p27_pT157->c-Raf_pS338)*beta(p27_pT157->c-Raf_pS338)*H_act(p27_pT157;K=0.693,n=0.693) = p27_pT157^n/(K^n+p27_pT157^n)
+      gate=0.000, beta=-1.23e-07, sign=act
+    + gate(FOXO3a_pS318_S321->c-Raf_pS338)*beta(FOXO3a_pS318_S321->c-Raf_pS338)*H_inh(FOXO3a_pS318_S321;K=0.693,n=0.693) = K^n/(K^n+FOXO3a_pS318_S321^n)
+      gate=0.000, beta=-1.22e-07, sign=inh
+    + gate(PRAS40_pT246->c-Raf_pS338)*beta(PRAS40_pT246->c-Raf_pS338)*H_act(PRAS40_pT246;K=0.693,n=0.693) = PRAS40_pT246^n/(K^n+PRAS40_pT246^n)
+      gate=0.000, beta=-1.22e-07, sign=act
+
+d(mTOR_pS2448)/dt = -gamma[mTOR_pS2448]*mTOR_pS2448 + basal[mTOR_pS2448] + Add + Mult
+  gamma[mTOR_pS2448] = 0.752926, basal[mTOR_pS2448] = -0.133574, Vmax[mTOR_pS2448] = 0.629738
+  Additive terms (top edges):
+    + gate(NF-kB-p65_pS536->mTOR_pS2448)*beta(NF-kB-p65_pS536->mTOR_pS2448)*H_act(NF-kB-p65_pS536;K=0.693,n=0.693) = NF-kB-p65_pS536^n/(K^n+NF-kB-p65_pS536^n)
+      gate=0.000, beta=-0.000215, sign=act
+    + gate(PKC-alpha_pS657->mTOR_pS2448)*beta(PKC-alpha_pS657->mTOR_pS2448)*H_act(PKC-alpha_pS657;K=0.693,n=0.693) = PKC-alpha_pS657^n/(K^n+PKC-alpha_pS657^n)
+      gate=0.000, beta=-0.000215, sign=act
+    + gate(EGFR_pY1068->mTOR_pS2448)*beta(EGFR_pY1068->mTOR_pS2448)*H_inh(EGFR_pY1068;K=0.693,n=0.693) = K^n/(K^n+EGFR_pY1068^n)
+      gate=0.000, beta=-0.000215, sign=inh
+    + gate(AMPK_pT172->mTOR_pS2448)*beta(AMPK_pT172->mTOR_pS2448)*H_act(AMPK_pT172;K=0.693,n=0.693) = AMPK_pT172^n/(K^n+AMPK_pT172^n)
+      gate=0.000, beta=-0.000215, sign=act
+    + gate(YAP_pS127->mTOR_pS2448)*beta(YAP_pS127->mTOR_pS2448)*H_act(YAP_pS127;K=0.693,n=0.693) = YAP_pS127^n/(K^n+YAP_pS127^n)
+      gate=0.000, beta=-0.000215, sign=act
+    + gate(MAPK_pT202_Y204->mTOR_pS2448)*beta(MAPK_pT202_Y204->mTOR_pS2448)*H_act(MAPK_pT202_Y204;K=0.693,n=0.693) = MAPK_pT202_Y204^n/(K^n+MAPK_pT202_Y204^n)
+      gate=0.000, beta=-0.000215, sign=act
+
+d(p27_pT157)/dt = -gamma[p27_pT157]*p27_pT157 + basal[p27_pT157] + Add + Mult
+  gamma[p27_pT157] = 0.698749, basal[p27_pT157] = -0.0102431, Vmax[p27_pT157] = 0.68826
+  Additive terms (top edges):
+    + gate(FOXO3a_pS318_S321->p27_pT157)*beta(FOXO3a_pS318_S321->p27_pT157)*H_inh(FOXO3a_pS318_S321;K=0.623,n=0.894) = K^n/(K^n+FOXO3a_pS318_S321^n)
+      gate=1.000, beta=-0.00978, sign=inh
+    + gate(BAD_pS112->p27_pT157)*beta(BAD_pS112->p27_pT157)*H_act(BAD_pS112;K=0.693,n=0.693) = BAD_pS112^n/(K^n+BAD_pS112^n)
+      gate=0.000, beta=-1.19e-06, sign=act
+    + gate(GSK3-alpha-beta_pS9->p27_pT157)*beta(GSK3-alpha-beta_pS9->p27_pT157)*H_act(GSK3-alpha-beta_pS9;K=0.693,n=0.693) = GSK3-alpha-beta_pS9^n/(K^n+GSK3-alpha-beta_pS9^n)
+      gate=0.000, beta=-1.19e-06, sign=act
+    + gate(YAP_pS127->p27_pT157)*beta(YAP_pS127->p27_pT157)*H_act(YAP_pS127;K=0.693,n=0.693) = YAP_pS127^n/(K^n+YAP_pS127^n)
+      gate=0.000, beta=-1.19e-06, sign=act
+    + gate(ACC_pS79->p27_pT157)*beta(ACC_pS79->p27_pT157)*H_act(ACC_pS79;K=0.693,n=0.693) = ACC_pS79^n/(K^n+ACC_pS79^n)
+      gate=0.000, beta=-1.19e-06, sign=act
+    + gate(JNK_pT183_pT185->p27_pT157)*beta(JNK_pT183_pT185->p27_pT157)*H_act(JNK_pT183_pT185;K=0.693,n=0.693) = JNK_pT183_pT185^n/(K^n+JNK_pT183_pT185^n)
+      gate=0.000, beta=-1.19e-06, sign=act
+
+d(p27_pT198)/dt = -gamma[p27_pT198]*p27_pT198 + basal[p27_pT198] + Add + Mult
+  gamma[p27_pT198] = 0.64445, basal[p27_pT198] = 0.0832623, Vmax[p27_pT198] = 0.736257
+  Additive terms (top edges):
+    + gate(PRAS40_pT246->p27_pT198)*beta(PRAS40_pT246->p27_pT198)*H_inh(PRAS40_pT246;K=0.762,n=0.764) = K^n/(K^n+PRAS40_pT246^n)
+      gate=1.000, beta=0.0835, sign=inh
+    + gate(HER2_pY1248->p27_pT198)*beta(HER2_pY1248->p27_pT198)*H_inh(HER2_pY1248;K=0.764,n=0.753) = K^n/(K^n+HER2_pY1248^n)
+      gate=1.000, beta=0.0834, sign=inh
+    + gate(YB-1_PS102->p27_pT198)*beta(YB-1_PS102->p27_pT198)*H_inh(YB-1_PS102;K=0.693,n=0.693) = K^n/(K^n+YB-1_PS102^n)
+      gate=0.000, beta=0.000128, sign=inh
+    + gate(c-JUN_pS73->p27_pT198)*beta(c-JUN_pS73->p27_pT198)*H_inh(c-JUN_pS73;K=0.693,n=0.693) = K^n/(K^n+c-JUN_pS73^n)
+      gate=0.000, beta=0.000128, sign=inh
+    + gate(CHK1_pS345->p27_pT198)*beta(CHK1_pS345->p27_pT198)*H_inh(CHK1_pS345;K=0.693,n=0.693) = K^n/(K^n+CHK1_pS345^n)
+      gate=0.000, beta=0.000128, sign=inh
+    + gate(Src_pY416->p27_pT198)*beta(Src_pY416->p27_pT198)*H_inh(Src_pY416;K=0.693,n=0.693) = K^n/(K^n+Src_pY416^n)
+      gate=0.000, beta=0.000128, sign=inh
+
+d(p38_pT180_Y182)/dt = -gamma[p38_pT180_Y182]*p38_pT180_Y182 + basal[p38_pT180_Y182] + Add + Mult
+  gamma[p38_pT180_Y182] = 0.763472, basal[p38_pT180_Y182] = -0.153645, Vmax[p38_pT180_Y182] = 0.620805
+  Additive terms (top edges):
+    + gate(YAP_pS127->p38_pT180_Y182)*beta(YAP_pS127->p38_pT180_Y182)*H_act(YAP_pS127;K=0.693,n=0.693) = YAP_pS127^n/(K^n+YAP_pS127^n)
+      gate=0.000, beta=-0.000281, sign=act
+    + gate(PKC-alpha_pS657->p38_pT180_Y182)*beta(PKC-alpha_pS657->p38_pT180_Y182)*H_act(PKC-alpha_pS657;K=0.693,n=0.693) = PKC-alpha_pS657^n/(K^n+PKC-alpha_pS657^n)
+      gate=0.000, beta=-0.000281, sign=act
+    + gate(PDK1_pS241->p38_pT180_Y182)*beta(PDK1_pS241->p38_pT180_Y182)*H_act(PDK1_pS241;K=0.693,n=0.693) = PDK1_pS241^n/(K^n+PDK1_pS241^n)
+      gate=0.000, beta=-0.000281, sign=act
+    + gate(EGFR_pY1068->p38_pT180_Y182)*beta(EGFR_pY1068->p38_pT180_Y182)*H_inh(EGFR_pY1068;K=0.693,n=0.693) = K^n/(K^n+EGFR_pY1068^n)
+      gate=0.000, beta=-0.000281, sign=inh
+    + gate(p27_pT157->p38_pT180_Y182)*beta(p27_pT157->p38_pT180_Y182)*H_act(p27_pT157;K=0.693,n=0.693) = p27_pT157^n/(K^n+p27_pT157^n)
+      gate=0.000, beta=-0.000281, sign=act
+    + gate(mTOR_pS2448->p38_pT180_Y182)*beta(mTOR_pS2448->p38_pT180_Y182)*H_inh(mTOR_pS2448;K=0.693,n=0.693) = K^n/(K^n+mTOR_pS2448^n)
+      gate=0.000, beta=-0.000281, sign=inh
+
+d(p70S6K_pT389)/dt = -gamma[p70S6K_pT389]*p70S6K_pT389 + basal[p70S6K_pT389] + Add + Mult
+  gamma[p70S6K_pT389] = 0.609348, basal[p70S6K_pT389] = 0.111629, Vmax[p70S6K_pT389] = 0.751122
+  Additive terms (top edges):
+    + gate(YB-1_PS102->p70S6K_pT389)*beta(YB-1_PS102->p70S6K_pT389)*H_inh(YB-1_PS102;K=0.804,n=0.745) = K^n/(K^n+YB-1_PS102^n)
+      gate=1.000, beta=0.111, sign=inh
+    + gate(p90RSK_pT359_S363->p70S6K_pT389)*beta(p90RSK_pT359_S363->p70S6K_pT389)*H_inh(p90RSK_pT359_S363;K=0.802,n=0.74) = K^n/(K^n+p90RSK_pT359_S363^n)
+      gate=1.000, beta=0.111, sign=inh
+    + gate(STAT3_pY705->p70S6K_pT389)*beta(STAT3_pY705->p70S6K_pT389)*H_inh(STAT3_pY705;K=0.693,n=0.693) = K^n/(K^n+STAT3_pY705^n)
+      gate=0.000, beta=0.000246, sign=inh
+    + gate(HER2_pY1248->p70S6K_pT389)*beta(HER2_pY1248->p70S6K_pT389)*H_inh(HER2_pY1248;K=0.693,n=0.693) = K^n/(K^n+HER2_pY1248^n)
+      gate=0.000, beta=0.000246, sign=inh
+    + gate(BAD_pS112->p70S6K_pT389)*beta(BAD_pS112->p70S6K_pT389)*H_inh(BAD_pS112;K=0.693,n=0.693) = K^n/(K^n+BAD_pS112^n)
+      gate=0.000, beta=0.000246, sign=inh
+    + gate(mTOR_pS2448->p70S6K_pT389)*beta(mTOR_pS2448->p70S6K_pT389)*H_act(mTOR_pS2448;K=0.693,n=0.693) = mTOR_pS2448^n/(K^n+mTOR_pS2448^n)
+      gate=0.000, beta=0.000246, sign=act
+
+d(p90RSK_pT359_S363)/dt = -gamma[p90RSK_pT359_S363]*p90RSK_pT359_S363 + basal[p90RSK_pT359_S363] + Add + Mult
+  gamma[p90RSK_pT359_S363] = 0.617746, basal[p90RSK_pT359_S363] = 0.0855368, Vmax[p90RSK_pT359_S363] = 0.737048
+  Additive terms (top edges):
+    + gate(PRAS40_pT246->p90RSK_pT359_S363)*beta(PRAS40_pT246->p90RSK_pT359_S363)*H_inh(PRAS40_pT246;K=0.775,n=0.729) = K^n/(K^n+PRAS40_pT246^n)
+      gate=1.000, beta=0.0855, sign=inh
+    + gate(GSK3-alpha-beta_pS9->p90RSK_pT359_S363)*beta(GSK3-alpha-beta_pS9->p90RSK_pT359_S363)*H_inh(GSK3-alpha-beta_pS9;K=0.774,n=0.709) = K^n/(K^n+GSK3-alpha-beta_pS9^n)
+      gate=1.000, beta=0.0854, sign=inh
+    + gate(p70S6K_pT389->p90RSK_pT359_S363)*beta(p70S6K_pT389->p90RSK_pT359_S363)*H_inh(p70S6K_pT389;K=0.773,n=0.706) = K^n/(K^n+p70S6K_pT389^n)
+      gate=1.000, beta=0.0854, sign=inh
+    + gate(EGFR_pY992->p90RSK_pT359_S363)*beta(EGFR_pY992->p90RSK_pT359_S363)*H_inh(EGFR_pY992;K=0.693,n=0.693) = K^n/(K^n+EGFR_pY992^n)
+      gate=0.000, beta=0.000163, sign=inh
+    + gate(JNK_pT183_pT185->p90RSK_pT359_S363)*beta(JNK_pT183_pT185->p90RSK_pT359_S363)*H_inh(JNK_pT183_pT185;K=0.693,n=0.693) = K^n/(K^n+JNK_pT183_pT185^n)
+      gate=0.000, beta=0.000163, sign=inh
+    + gate(AMPK_pT172->p90RSK_pT359_S363)*beta(AMPK_pT172->p90RSK_pT359_S363)*H_inh(AMPK_pT172;K=0.693,n=0.693) = K^n/(K^n+AMPK_pT172^n)
+      gate=0.000, beta=0.000163, sign=inh

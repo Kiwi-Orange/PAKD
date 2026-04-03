@@ -1,0 +1,14 @@
+Biological Prior:
+
+495 Pathway Commons pathways were combined to produce a biological pathway prior for the Dream8 challenge. These pathways were downloaded from pathwaycommons.org in BioPax format and parsed. Dream8 organizers provide a file that describes the antibodies used in the RPPA experiments, and 263 Dream8-relevant pathways were identified from the original 495 that contained at least two of these antibodies, regardless of whether they are directly linked in the pathway or not.
+
+For each pathway, a heat diffusion process was used to derive an update for all of the nodes in each graph G. The approach does not consider the directionality of an edge in G, making use of the unsigned adjacency matrix A, where Aij=Aji=1 whenever an edge is present between two nodes i and j. Let D be a diagonal matrix with Dii equal to the number of other genes that gene i interacts with, and Bij=0 for all i≠j. The heat diffusion-based update is the matrix exponential of (D-A)*t, where D-A is known as the Laplacian matrix of G, its exponentiated form is known as the diffusion kernel, and t is an arbitrary time step set to 0.1, which has been shown to be a useful in the context of biological network discovery (Vandin et. Al, 2012, Paull et. Al, 2013). The matrix exponential is estimated using the implementation of the Padé approximation in Matlab (Golub and Van Loan, 1989). Once the diffusion kernel is available, the relevance scores x’ can be computed in one linear operation.
+
+Submatrices were extracted from each diffusion kernel by keeping only rows and columns in the matrices that correspond to antibody-targeted proteins. The extracted submatrices were then combined, creating one matrix that contains only antibody-targeted proteins. The resulting summary matrix was used by re-mapping the protein names back to the names of the antibodies that target them.
+
+
+References:
+
+Evan O. Paull, Daniel E. Carlin, Mario Niepel, Peter K. Sorger, David Haussler and Joshua M. Stuart (2013) Discovering causal pathways linking genomic events to transcriptional states using Tied Diffusion Through Interacting Events (TieDIE). Bioinformatics: doi: 10.1093/bioinformatics/btt471
+
+Vandin, F., et al. (2012) Discovery of mutated subnetworks associated with clinical data in cancer, Pacific Symposium on Biocomputing. Pacific Symposium on Biocomputing, 55-66.
