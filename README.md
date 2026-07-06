@@ -55,7 +55,6 @@ python <benchmark>/make_nature_figure.py
 ### Additional Analyses
 
 - **Fisher-KPP**: `analyze_learned_dynamics.py` — extract effective PDE coefficients.
-- **MMReaction**: `PEAvsQSSA.py` — PAKD vs. classical QSSA reduction.
 - **HPN-DREAM**: `darts_hill_discovery.py` — differentiable signaling network discovery.
 
 ## Publication Figures
